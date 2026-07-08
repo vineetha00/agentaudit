@@ -15,14 +15,19 @@ to pick up the next unchecked stage cold.
 
 Endpoint (verified): `pytest` green; `agentaudit examples/demo_trace.json --failure "..."` blames s2/researcher, flags the analyst loop, warns on 69% spend share.
 
-## Stage 1 — Validate the LLM judge (needs ANTHROPIC_API_KEY, ~$1 of usage)
+## Stage 1 — Validate the LLM judge (needs ANTHROPIC_API_KEY, ~$1 of usage) — Done
 
-- [ ] Run the demo: `agentaudit examples/demo_trace.json --judge anthropic --failure "equipment revenue wrong, total transposed to 12.2 instead of 8.6"`
-- [ ] Confirm attribution still lands on s2 and handoff rationales are sensible
-- [ ] Create 3 more example traces with different failure types: context dropped at a handoff, tool output misread, instruction ignored. Confirm the judge attributes each correctly; tune the two prompts in `judge.py` if not
-- [ ] Add `tests/test_anthropic_judge.py` gated behind `@pytest.mark.skipif(no key)`
+- [x] Run the demo: `agentaudit examples/demo_trace.json --judge anthropic --failure "equipment revenue wrong, total transposed to 12.2 instead of 8.6"`
+- [x] Confirm attribution still lands on s2 and handoff rationales are sensible
+- [x] Create 3 more example traces with different failure types: context dropped at a handoff (`examples/context_dropped_trace.json`), tool output misread (`examples/tool_misread_trace.json`), instruction ignored (`examples/instruction_ignored_trace.json`). Confirm the judge attributes each correctly; tune the two prompts in `judge.py` if not
+- [x] Add `tests/test_anthropic_judge.py` gated behind `@pytest.mark.skipif(no key)`
 
-Endpoint: 4 traces, all attributed correctly by the LLM judge, prompts frozen.
+Endpoint (verified 2026-07-08): all 4 traces attributed correctly by AnthropicJudge on the
+first run — no prompt tuning needed. The judge correctly exonerated upstream steps that
+merely *contained* the failure's numeric signature (e.g. raw tool output showing 1200)
+from steps that *asserted* the wrong claim, something the heuristic judge's numeric-match
+approach can't distinguish. Bisect (Stage 3) also exercised correctly against the live
+judge: 4 judge calls to attribute the 6-step demo trace instead of 6.
 
 ## Stage 2 — Framework adapters (the adoption feature)
 

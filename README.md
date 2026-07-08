@@ -35,6 +35,8 @@ Two judge backends decide handoff scores and defect verdicts:
 
 The `Judge` protocol in `agentaudit/judge.py` is two methods; adding an OpenAI or local-model judge is a small class.
 
+Validated against four example traces covering distinct failure types (`examples/demo_trace.json`, `context_dropped_trace.json`, `tool_misread_trace.json`, `instruction_ignored_trace.json`) — numeric transposition, context dropped at a handoff, a tool output misread by the receiving agent, and an explicit instruction ignored. The Anthropic judge attributed all four correctly, including distinguishing steps that merely *contain* a failure's numeric signature from steps that *assert* the wrong claim — a distinction the heuristic judge can't make. See `tests/test_anthropic_judge.py` (skipped without `ANTHROPIC_API_KEY`, so it never runs in CI).
+
 ## Trace format
 
 A trace is a JSON file: workflow name, task, final output, optional expected output, and an ordered list of steps. Each step records the agent, its input and output, model, token counts, and an optional declared `handoff_to`:
@@ -118,4 +120,4 @@ The test suite covers trace loading and validation, loop detection (positive and
 
 ## Honest scope
 
-This is v0.2.0. The deterministic layer (loops, cost, structure) is solid. The heuristic judge is intentionally simple — it exists so the pipeline runs offline and testably; real semantic evaluation requires the LLM judge, whose prompt quality has not yet been validated against labeled failure datasets. Bisect attribution assumes defect presence is monotone once introduced; it verifies the defect is present at the final step before bisecting and falls back to a linear scan otherwise. See PLAN.md for remaining milestones.
+This is v0.2.0. The deterministic layer (loops, cost, structure) is solid. The heuristic judge is intentionally simple — it exists so the pipeline runs offline and testably; it's good for CI and regression tests but limited on subtle semantic failures. The LLM judge has been validated against four distinct failure types (see Judges above) and is the recommended judge for real attribution work. Bisect attribution assumes defect presence is monotone once introduced; it verifies the defect is present at the final step before bisecting and falls back to a linear scan otherwise. See PLAN.md for remaining milestones.

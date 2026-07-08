@@ -1,0 +1,47 @@
+{
+  "workflow": "expense_approval_pipeline",
+  "task": "Review a submitted contractor expense and decide whether it can be auto-approved under company policy.",
+  "expected_output": "REJECTED: travel expense requires prior approval on file for contractors per policy 4.2; none found. Route to manual review.",
+  "final_output": "APPROVED: travel expense of $4,200, receipt attached, under the $5,000 auto-approval threshold. No further action needed.",
+  "steps": [
+    {
+      "id": "s1",
+      "agent": "intake",
+      "model": "claude-haiku-4-5",
+      "input": "New expense submission from contractor Alex Kim.",
+      "output": "Expense record: category=travel, amount=$4,200, submitted_by=Alex Kim (contractor), receipt_attached=yes, prior_approval_on_file=NO (contractors require pre-approval per policy 4.2 before travel is booked).",
+      "tokens_in": 280,
+      "tokens_out": 140,
+      "handoff_to": "policy_checker"
+    },
+    {
+      "id": "s2",
+      "agent": "policy_checker",
+      "model": "claude-haiku-4-5",
+      "input": "Expense record: category=travel, amount=$4,200, receipt_attached=yes.",
+      "output": "Policy check: travel category with receipt attached, amount $4,200 is under the $5,000 auto-approval threshold. APPROVED for auto-approval, compliant with policy.",
+      "tokens_in": 310,
+      "tokens_out": 160,
+      "handoff_to": "approver"
+    },
+    {
+      "id": "s3",
+      "agent": "approver",
+      "model": "claude-haiku-4-5",
+      "input": "Policy check result: APPROVED for auto-approval, travel expense $4,200, compliant with policy.",
+      "output": "APPROVED: travel expense of $4,200, receipt attached, under the $5,000 auto-approval threshold. No further action needed.",
+      "tokens_in": 220,
+      "tokens_out": 90,
+      "handoff_to": "notifier"
+    },
+    {
+      "id": "s4",
+      "agent": "notifier",
+      "model": "claude-haiku-4-5",
+      "input": "Final decision: APPROVED, travel expense $4,200.",
+      "output": "Notified Alex Kim: your $4,200 travel expense has been auto-approved. No further action needed.",
+      "tokens_in": 150,
+      "tokens_out": 60
+    }
+  ]
+}

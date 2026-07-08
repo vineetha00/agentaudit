@@ -1,0 +1,37 @@
+{
+  "workflow": "inventory_availability_pipeline",
+  "task": "Determine how many units of SKU-118 are available to promise for new orders.",
+  "expected_output": "SKU-118 has 250 units available to promise (1,200 on hand minus 950 reserved for existing orders).",
+  "final_output": "SKU-118 has 1,200 units available to promise for new orders.",
+  "steps": [
+    {
+      "id": "s1",
+      "agent": "fetcher",
+      "model": "claude-haiku-4-5",
+      "input": "Look up current warehouse stock for SKU-118.",
+      "output": "Warehouse API response for SKU-118: on_hand=1200, reserved=950, in_transit=0, available=250.",
+      "tokens_in": 200,
+      "tokens_out": 90,
+      "handoff_to": "analyzer"
+    },
+    {
+      "id": "s2",
+      "agent": "analyzer",
+      "model": "claude-haiku-4-5",
+      "input": "Warehouse API response for SKU-118: on_hand=1200, reserved=950, in_transit=0, available=250.",
+      "output": "Analysis: SKU-118 on_hand count is 1200 units. Reading the on_hand field as the available-to-promise figure, SKU-118 has 1,200 units available to promise for new orders.",
+      "tokens_in": 260,
+      "tokens_out": 130,
+      "handoff_to": "writer"
+    },
+    {
+      "id": "s3",
+      "agent": "writer",
+      "model": "claude-sonnet-4-6",
+      "input": "Analysis: SKU-118 has 1,200 units available to promise for new orders.",
+      "output": "SKU-118 has 1,200 units available to promise for new orders.",
+      "tokens_in": 150,
+      "tokens_out": 60
+    }
+  ]
+}
