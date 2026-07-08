@@ -1,0 +1,65 @@
+[
+  {
+    "__start__": {
+      "messages": [
+        {
+          "type": "human",
+          "content": "Summarize competitor pricing for the Starter, Pro, and Enterprise tiers."
+        }
+      ]
+    }
+  },
+  {
+    "planner": {
+      "messages": [
+        {
+          "type": "ai",
+          "content": "Plan: researcher pulls current list prices for the three tiers from the pricing pages, analyst sanity-checks them against last quarter's snapshot, writer produces the brief.",
+          "usage_metadata": {"input_tokens": 310, "output_tokens": 95, "total_tokens": 405},
+          "response_metadata": {"model_name": "claude-sonnet-4-6"}
+        }
+      ]
+    }
+  },
+  {
+    "researcher": {
+      "messages": [
+        {
+          "type": "ai",
+          "content": "Current list prices: Starter $49/mo, Pro $79/mo, Enterprise $199/mo. Sourced from the public pricing page today.",
+          "usage_metadata": {"input_tokens": 1200, "output_tokens": 180, "total_tokens": 1380},
+          "response_metadata": {"model_name": "claude-haiku-4-5"}
+        }
+      ]
+    }
+  },
+  {
+    "analyst": {
+      "messages": [
+        {
+          "type": "ai",
+          "content": "Checked against last quarter: Starter $49/mo, Pro $79/mo, Enterprise $199/mo. No changes detected, figures approved for the brief.",
+          "usage_metadata": {"input_tokens": 1650, "output_tokens": 140, "total_tokens": 1790},
+          "response_metadata": {"model_name": "claude-haiku-4-5"}
+        }
+      ]
+    }
+  },
+  {
+    "writer": {
+      "messages": [
+        {
+          "type": "ai",
+          "content": [
+            {
+              "type": "text",
+              "text": "Competitor pricing brief: Starter $49/mo, Pro $79/mo, Enterprise $199/mo. Positioning unchanged quarter over quarter."
+            }
+          ],
+          "usage_metadata": {"input_tokens": 520, "output_tokens": 110, "total_tokens": 630},
+          "response_metadata": {"model_name": "claude-sonnet-4-6"}
+        }
+      ]
+    }
+  }
+]

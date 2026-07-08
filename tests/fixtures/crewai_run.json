@@ -1,0 +1,39 @@
+{
+  "raw": "Q3 churn report: overall churn 3.1%, driven by the SMB segment at 5.4%; Enterprise stable at 0.9%.",
+  "tasks_output": [
+    {
+      "description": "Pull Q3 churn rates by customer segment from the analytics warehouse.",
+      "name": "research_churn",
+      "expected_output": "Churn rate per segment for Q3.",
+      "summary": "Pull Q3 churn rates by customer segment from the analytics...",
+      "raw": "Q3 churn by segment: SMB 5.4%, Mid-market 2.6%, Enterprise 0.9%. Overall weighted churn 3.1%.",
+      "agent": "Data Researcher",
+      "output_format": "raw"
+    },
+    {
+      "description": "Analyze the churn numbers and identify the segment driving overall churn.",
+      "name": "analyze_churn",
+      "expected_output": "Analysis naming the driving segment.",
+      "summary": "Analyze the churn numbers and identify the segment driving...",
+      "raw": "SMB churn at 5.4% is the primary driver of the 3.1% overall rate; Enterprise at 0.9% is stable.",
+      "agent": "Churn Analyst",
+      "output_format": "raw"
+    },
+    {
+      "description": "Write the executive churn report from the analysis.",
+      "name": "write_report",
+      "expected_output": "Two-sentence executive report.",
+      "summary": "Write the executive churn report from the analysis...",
+      "raw": "Q3 churn report: overall churn 3.1%, driven by the SMB segment at 5.4%; Enterprise stable at 0.9%.",
+      "agent": "Report Writer",
+      "output_format": "raw"
+    }
+  ],
+  "token_usage": {
+    "total_tokens": 8400,
+    "prompt_tokens": 6300,
+    "completion_tokens": 2100,
+    "successful_requests": 3,
+    "cached_prompt_tokens": 0
+  }
+}

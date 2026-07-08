@@ -1,0 +1,65 @@
+{
+  "workflow": "market_research_pipeline",
+  "task": "Produce a summary of Q2 revenue for the three product lines: lenses, drops, equipment.",
+  "expected_output": "Lenses $4.2M, Drops $1.8M, Equipment $2.6M, total $8.6M.",
+  "final_output": "Lenses $4.2M, Drops $1.8M, Equipment $6.2M, total $12.2M.",
+  "steps": [
+    {
+      "id": "s1",
+      "agent": "planner",
+      "model": "claude-sonnet-4-6",
+      "input": "Produce a summary of Q2 revenue for the three product lines.",
+      "output": "Plan: (1) researcher pulls Q2 revenue for lenses, drops, equipment. (2) analyst totals and validates. (3) writer produces the summary.",
+      "tokens_in": 350,
+      "tokens_out": 120,
+      "handoff_to": "researcher"
+    },
+    {
+      "id": "s2",
+      "agent": "researcher",
+      "model": "claude-haiku-4-5",
+      "input": "Pull Q2 revenue for lenses, drops, equipment.",
+      "output": "Q2 revenue: lenses $4.2M, drops $1.8M, equipment $6.2M. equipment figure transposed 12.2 total",
+      "tokens_in": 900,
+      "tokens_out": 210,
+      "handoff_to": "analyst"
+    },
+    {
+      "id": "s3",
+      "agent": "analyst",
+      "model": "claude-haiku-4-5",
+      "input": "Validate: lenses $4.2M, drops $1.8M, equipment $6.2M.",
+      "output": "Checked totals. lenses 4.2 drops 1.8 equipment 6.2 sum 12.2. Validation inconclusive, retrying.",
+      "tokens_in": 2500,
+      "tokens_out": 600
+    },
+    {
+      "id": "s4",
+      "agent": "analyst",
+      "model": "claude-haiku-4-5",
+      "input": "Validate: lenses $4.2M, drops $1.8M, equipment $6.2M.",
+      "output": "Checked totals. lenses 4.2 drops 1.8 equipment 6.2 sum 12.2. Validation inconclusive, retrying.",
+      "tokens_in": 2500,
+      "tokens_out": 600
+    },
+    {
+      "id": "s5",
+      "agent": "analyst",
+      "model": "claude-haiku-4-5",
+      "input": "Validate: lenses $4.2M, drops $1.8M, equipment $6.2M.",
+      "output": "Checked totals. lenses 4.2 drops 1.8 equipment 6.2 sum 12.2. Validation inconclusive, retrying.",
+      "tokens_in": 2500,
+      "tokens_out": 600,
+      "handoff_to": "writer"
+    },
+    {
+      "id": "s6",
+      "agent": "writer",
+      "model": "claude-sonnet-4-6",
+      "input": "Write the summary. Figures: lenses $4.2M, drops $1.8M, equipment $6.2M, total $12.2M.",
+      "output": "Lenses $4.2M, Drops $1.8M, Equipment $6.2M, total $12.2M.",
+      "tokens_in": 400,
+      "tokens_out": 90
+    }
+  ]
+}
