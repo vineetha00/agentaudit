@@ -17,10 +17,12 @@ Think `git blame`, but for agent pipelines.
 ## Quickstart
 
 ```bash
-pip install -e .
+pip install agentaudit-eval
 agentaudit examples/demo_trace.json \
   --failure "equipment revenue wrong, total transposed to 12.2 instead of 8.6"
 ```
+
+The PyPI package is named `agentaudit-eval` (`agentaudit` and `agent-audit` were both taken), but the CLI command and Python import are both still just `agentaudit`. For local development, use `pip install -e .` instead.
 
 The demo trace contains a planted defect (the researcher transposes a figure) and a planted retry loop (the analyst spins three times). The report blames the researcher at step s2, exonerates the planner, flags the loop, and warns that the analyst consumed 69% of total spend.
 
@@ -95,7 +97,7 @@ Conditions: `loops` (degenerate retry loops), `structural` (dangling/mismatched 
 ```yaml
 - name: Audit agent pipeline trace
   run: |
-    pip install agentaudit
+    pip install agentaudit-eval
     agentaudit artifacts/last_run_trace.json --fail-on "loops,handoff<3" --format json -o audit.json
 ```
 

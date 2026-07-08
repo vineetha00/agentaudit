@@ -50,10 +50,10 @@ Endpoint: bisect cuts judge calls on a 20-step trace from 20 to ≤6; CI gate de
 
 - [x] Push to GitHub under vineetha00 with MIT license, CI workflow running the offline tests (https://github.com/vineetha00/agentaudit, CI green)
 - [x] Record a demo GIF: pipeline fails → agentaudit blames the right agent (`examples/demo.gif`, regenerate with `scripts/make_demo_gif.py`)
-- [ ] PyPI release (`pip install agentaudit`) — name confirmed free 2026-07-07; v0.2.0 sdist+wheel built and twine-checked; upload needs a PyPI API token: `python -m twine upload dist/*`
+- [x] PyPI release — `agentaudit` and the plan's fallback `agent-audit` are both blocked by PyPI's name-similarity rule (they normalize to the same "ultranormalized" name and `agent-audit` is already registered to someone else). Registered as `agentaudit-eval` instead; the `agentaudit` CLI command and Python import are unaffected since `[project.name]` and `[project.scripts]` are independent. Live at https://pypi.org/project/agentaudit-eval/0.2.0/, verified with a clean-venv install (2026-07-08)
 - [ ] Resume bullet + portfolio entry; pairs with PromptOps as the "production LLM reliability" story
 
-Endpoint: `pip install agentaudit` works from a clean machine; README GIF renders on GitHub.
+Endpoint (verified 2026-07-08): `pip install agentaudit-eval` works from a clean machine and installs the `agentaudit` CLI command; README GIF renders on GitHub.
 
 ## Explicitly out of scope for v1
 
