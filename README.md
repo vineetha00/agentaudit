@@ -1,5 +1,10 @@
 # AgentAudit
 
+[![PyPI version](https://img.shields.io/pypi/v/agentaudit-eval.svg)](https://pypi.org/project/agentaudit-eval/)
+[![CI](https://github.com/vineetha00/agentaudit/actions/workflows/ci.yml/badge.svg)](https://github.com/vineetha00/agentaudit/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+
 Evaluation framework for multi-agent AI workflows. You can evaluate a single LLM turn with a dozen tools; AgentAudit evaluates the *workflow* — did agents collaborate correctly, where did reasoning break down across handoffs, and which agent caused the failure.
 
 Think `git blame`, but for agent pipelines.

@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use AgentAudit in your work, please cite it as below."
+title: "AgentAudit: failure attribution, handoff scoring, loop detection, and cost guardrails for multi-agent LLM workflows"
+type: software
+authors:
+  - family-names: "Vallish Kumar"
+    given-names: "Vineetha"
+repository-code: "https://github.com/vineetha00/agentaudit"
+url: "https://pypi.org/project/agentaudit-eval/"
+license: MIT
+version: 0.2.0
+date-released: 2026-07-08
+keywords:
+  - llm
+  - multi-agent
+  - evaluation
+  - failure-attribution
+  - observability
