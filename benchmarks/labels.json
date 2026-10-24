@@ -1,0 +1,782 @@
+{
+ "quarterly_finance__numeric_error__v0": {
+  "family": "numeric_error",
+  "trap": false,
+  "failure_description": "the report states equipment revenue of $2.9M instead of $9.2M",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__numeric_error__v1": {
+  "family": "numeric_error",
+  "trap": true,
+  "failure_description": "the report states equipment revenue of $6.7M instead of $7.6M",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__numeric_error__v2": {
+  "family": "numeric_error",
+  "trap": false,
+  "failure_description": "the report states equipment revenue of $2.8M instead of $8.2M",
+  "origin_step_id": "s4",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": false,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__numeric_error__v3": {
+  "family": "numeric_error",
+  "trap": true,
+  "failure_description": "the report states equipment revenue of $2.7M instead of $7.2M",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__unit_error__v0": {
+  "family": "unit_error",
+  "trap": false,
+  "failure_description": "the report states equipment revenue of $7,200 rather than $7.2M \u2014 the magnitude is off by three orders",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__unit_error__v1": {
+  "family": "unit_error",
+  "trap": true,
+  "failure_description": "the report states equipment revenue of $11,200 rather than $11.2M \u2014 the magnitude is off by three orders",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__unit_error__v2": {
+  "family": "unit_error",
+  "trap": false,
+  "failure_description": "the report states equipment revenue of $8,400 rather than $8.4M \u2014 the magnitude is off by three orders",
+  "origin_step_id": "s4",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": false,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__unit_error__v3": {
+  "family": "unit_error",
+  "trap": true,
+  "failure_description": "the report states equipment revenue of $7,600 rather than $7.6M \u2014 the magnitude is off by three orders",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__tool_misread__v0": {
+  "family": "tool_misread",
+  "trap": false,
+  "failure_description": "the report states equipment revenue of $6.7M instead of $7.6M",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__tool_misread__v1": {
+  "family": "tool_misread",
+  "trap": true,
+  "failure_description": "the report states equipment revenue of $6.7M instead of $7.6M",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__tool_misread__v2": {
+  "family": "tool_misread",
+  "trap": false,
+  "failure_description": "the report states equipment revenue of $4.11M instead of $11.4M",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__tool_misread__v3": {
+  "family": "tool_misread",
+  "trap": true,
+  "failure_description": "the report states equipment revenue of $4.9M instead of $9.4M",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__context_dropped__v0": {
+  "family": "context_dropped",
+  "trap": false,
+  "failure_description": "the summary includes the divested unit the controller said to exclude the divested Osaka unit",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__context_dropped__v1": {
+  "family": "context_dropped",
+  "trap": true,
+  "failure_description": "the summary includes the divested unit the controller said to exclude the divested Austin unit",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__context_dropped__v2": {
+  "family": "context_dropped",
+  "trap": false,
+  "failure_description": "the summary includes the divested unit the controller said to exclude the divested Osaka unit",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__context_dropped__v3": {
+  "family": "context_dropped",
+  "trap": true,
+  "failure_description": "the summary includes the divested unit the controller said to exclude the divested Austin unit",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__instruction_ignored__v0": {
+  "family": "instruction_ignored",
+  "trap": false,
+  "failure_description": "figures are reported in thousands of USD, violating the instruction to report in USD millions with one decimal",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__instruction_ignored__v1": {
+  "family": "instruction_ignored",
+  "trap": true,
+  "failure_description": "figures are reported in thousands of USD, violating the instruction to report in USD millions with one decimal",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__instruction_ignored__v2": {
+  "family": "instruction_ignored",
+  "trap": false,
+  "failure_description": "figures are reported in thousands of USD, violating the instruction to report in USD millions with one decimal",
+  "origin_step_id": "s4",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": false,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "quarterly_finance__instruction_ignored__v3": {
+  "family": "instruction_ignored",
+  "trap": true,
+  "failure_description": "figures are reported in thousands of USD, violating the instruction to report in USD millions with one decimal",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__numeric_error__v0": {
+  "family": "numeric_error",
+  "trap": false,
+  "failure_description": "the ticket was routed P2 for 4320 affected users, but the ticket shows 3420 users, which is P1",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__numeric_error__v1": {
+  "family": "numeric_error",
+  "trap": true,
+  "failure_description": "the ticket was routed P2 for 1250 affected users, but the ticket shows 2150 users, which is P1",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__numeric_error__v2": {
+  "family": "numeric_error",
+  "trap": false,
+  "failure_description": "the ticket was routed P2 for 4320 affected users, but the ticket shows 3420 users, which is P1",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__numeric_error__v3": {
+  "family": "numeric_error",
+  "trap": true,
+  "failure_description": "the ticket was routed P2 for 1250 affected users, but the ticket shows 2150 users, which is P1",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__unit_error__v0": {
+  "family": "unit_error",
+  "trap": false,
+  "failure_description": "the outage was scoped to a single site instead of 2150 users fleet-wide, so it was routed P3 instead of P1",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__unit_error__v1": {
+  "family": "unit_error",
+  "trap": true,
+  "failure_description": "the outage was scoped to a single site instead of 3420 users fleet-wide, so it was routed P3 instead of P1",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__unit_error__v2": {
+  "family": "unit_error",
+  "trap": false,
+  "failure_description": "the outage was scoped to a single site instead of 3420 users fleet-wide, so it was routed P3 instead of P1",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__unit_error__v3": {
+  "family": "unit_error",
+  "trap": true,
+  "failure_description": "the outage was scoped to a single site instead of 2150 users fleet-wide, so it was routed P3 instead of P1",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__tool_misread__v0": {
+  "family": "tool_misread",
+  "trap": false,
+  "failure_description": "the ticket was routed P2 for 4320 affected users, but the ticket shows 3420 users, which is P1",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__tool_misread__v1": {
+  "family": "tool_misread",
+  "trap": true,
+  "failure_description": "the ticket was routed P2 for 6180 affected users, but the ticket shows 1680 users, which is P1",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__tool_misread__v2": {
+  "family": "tool_misread",
+  "trap": false,
+  "failure_description": "the ticket was routed P2 for 4320 affected users, but the ticket shows 3420 users, which is P1",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__tool_misread__v3": {
+  "family": "tool_misread",
+  "trap": true,
+  "failure_description": "the ticket was routed P2 for 6180 affected users, but the ticket shows 1680 users, which is P1",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__context_dropped__v0": {
+  "family": "context_dropped",
+  "trap": false,
+  "failure_description": "the on-call engineer was never paged although the customer is enterprise tier",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__context_dropped__v1": {
+  "family": "context_dropped",
+  "trap": true,
+  "failure_description": "the on-call engineer was never paged although the customer is enterprise tier",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__context_dropped__v2": {
+  "family": "context_dropped",
+  "trap": false,
+  "failure_description": "the on-call engineer was never paged although the customer is enterprise tier",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__context_dropped__v3": {
+  "family": "context_dropped",
+  "trap": true,
+  "failure_description": "the on-call engineer was never paged although the customer is enterprise tier",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__instruction_ignored__v0": {
+  "family": "instruction_ignored",
+  "trap": false,
+  "failure_description": "messages omit the ticket id TCK-4098, violating the triage instruction",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__instruction_ignored__v1": {
+  "family": "instruction_ignored",
+  "trap": true,
+  "failure_description": "messages omit the ticket id TCK-8826, violating the triage instruction",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__instruction_ignored__v2": {
+  "family": "instruction_ignored",
+  "trap": false,
+  "failure_description": "messages omit the ticket id TCK-6152, violating the triage instruction",
+  "origin_step_id": "s4",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": false,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "support_triage__instruction_ignored__v3": {
+  "family": "instruction_ignored",
+  "trap": true,
+  "failure_description": "messages omit the ticket id TCK-4033, violating the triage instruction",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__numeric_error__v0": {
+  "family": "numeric_error",
+  "trap": false,
+  "failure_description": "the purchase order was placed for 8130 units instead of 1830",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__numeric_error__v1": {
+  "family": "numeric_error",
+  "trap": true,
+  "failure_description": "the purchase order was placed for 8130 units instead of 1830",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__numeric_error__v2": {
+  "family": "numeric_error",
+  "trap": false,
+  "failure_description": "the purchase order was placed for 5120 units instead of 1520",
+  "origin_step_id": "s4",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": false,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__numeric_error__v3": {
+  "family": "numeric_error",
+  "trap": true,
+  "failure_description": "the purchase order was placed for 5120 units instead of 1520",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__unit_error__v0": {
+  "family": "unit_error",
+  "trap": false,
+  "failure_description": "the order was placed for 2450 cases (24 units each) instead of 2450 units \u2014 24x too much stock",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__unit_error__v1": {
+  "family": "unit_error",
+  "trap": true,
+  "failure_description": "the order was placed for 3260 cases (24 units each) instead of 3260 units \u2014 24x too much stock",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__unit_error__v2": {
+  "family": "unit_error",
+  "trap": false,
+  "failure_description": "the order was placed for 1830 cases (24 units each) instead of 1830 units \u2014 24x too much stock",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__unit_error__v3": {
+  "family": "unit_error",
+  "trap": true,
+  "failure_description": "the order was placed for 2450 cases (24 units each) instead of 2450 units \u2014 24x too much stock",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__tool_misread__v0": {
+  "family": "tool_misread",
+  "trap": false,
+  "failure_description": "the purchase order was placed for 2360 units instead of 3260",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__tool_misread__v1": {
+  "family": "tool_misread",
+  "trap": true,
+  "failure_description": "the purchase order was placed for 4250 units instead of 2450",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__tool_misread__v2": {
+  "family": "tool_misread",
+  "trap": false,
+  "failure_description": "the purchase order was placed for 5120 units instead of 1520",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__tool_misread__v3": {
+  "family": "tool_misread",
+  "trap": true,
+  "failure_description": "the purchase order was placed for 2360 units instead of 3260",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__context_dropped__v0": {
+  "family": "context_dropped",
+  "trap": false,
+  "failure_description": "a purchase above $50,000 was placed without Jordan Kim's sign-off",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__context_dropped__v1": {
+  "family": "context_dropped",
+  "trap": true,
+  "failure_description": "a purchase above $50,000 was placed without Diego Novak's sign-off",
+  "origin_step_id": "s4",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": false,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__context_dropped__v2": {
+  "family": "context_dropped",
+  "trap": false,
+  "failure_description": "a purchase above $50,000 was placed without Ravi Novak's sign-off",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__context_dropped__v3": {
+  "family": "context_dropped",
+  "trap": true,
+  "failure_description": "a purchase above $50,000 was placed without Mina Haddad's sign-off",
+  "origin_step_id": "s4",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": false,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__instruction_ignored__v0": {
+  "family": "instruction_ignored",
+  "trap": false,
+  "failure_description": "the order quantity 1837 is not a multiple of a 24-unit case, violating the case-rounding instruction",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__instruction_ignored__v1": {
+  "family": "instruction_ignored",
+  "trap": true,
+  "failure_description": "the order quantity 2457 is not a multiple of a 24-unit case, violating the case-rounding instruction",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__instruction_ignored__v2": {
+  "family": "instruction_ignored",
+  "trap": false,
+  "failure_description": "the order quantity 1837 is not a multiple of a 24-unit case, violating the case-rounding instruction",
+  "origin_step_id": "s2",
+  "step_labels": {
+   "s1": false,
+   "s2": true,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ },
+ "inventory_restock__instruction_ignored__v3": {
+  "family": "instruction_ignored",
+  "trap": true,
+  "failure_description": "the order quantity 3267 is not a multiple of a 24-unit case, violating the case-rounding instruction",
+  "origin_step_id": "s3",
+  "step_labels": {
+   "s1": false,
+   "s2": false,
+   "s3": true,
+   "s4": true,
+   "s5": true
+  }
+ }
+}

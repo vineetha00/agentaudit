@@ -17,8 +17,19 @@ def main(argv: list[str] | None = None) -> int:
         description="Evaluate a multi-agent workflow trace: handoffs, failure attribution, loops, cost.",
     )
     parser.add_argument("trace", help="path to a trace JSON file")
-    parser.add_argument("--judge", choices=["heuristic", "anthropic"], default="heuristic")
-    parser.add_argument("--model", default="claude-sonnet-4-6", help="judge model (anthropic judge only)")
+    parser.add_argument(
+        "--judge",
+        choices=["heuristic", "anthropic", "openai-compat"],
+        default="heuristic",
+        help="openai-compat talks to any OpenAI-compatible server (ollama, vLLM, llama.cpp)",
+    )
+    parser.add_argument("--model", default="claude-sonnet-4-6", help="judge model (LLM judges only)")
+    parser.add_argument(
+        "--judge-url",
+        default=None,
+        metavar="URL",
+        help="base URL for the openai-compat judge (default http://localhost:11434/v1, a local ollama)",
+    )
     parser.add_argument("--failure", default=None, help="describe the failure to run attribution")
     parser.add_argument(
         "--attribution",
@@ -44,7 +55,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     trace = Trace.load(args.trace)
-    judge = get_judge(args.judge, model=args.model)
+    judge = get_judge(args.judge, model=args.model, base_url=args.judge_url)
     report = audit(
         trace,
         judge,

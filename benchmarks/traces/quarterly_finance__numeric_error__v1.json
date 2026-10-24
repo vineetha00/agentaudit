@@ -1,0 +1,62 @@
+{
+ "workflow": "quarterly_finance_emea",
+ "task": "Produce the Q3 EMEA equipment-revenue summary for the board. Report every figure in USD millions with one decimal place. Per the controller's note, exclude the divested Austin unit from all totals.",
+ "expected_output": "Published to board portal: Q3 EMEA equipment revenue is $7.6M",
+ "final_output": "Published to board portal: Q3 EMEA equipment revenue is $6.7M. Distribution complete.",
+ "steps": [
+  {
+   "id": "s1",
+   "agent": "data_puller",
+   "model": "tool",
+   "input": "Pull Q3 EMEA equipment revenue from the ledger. (exclude the divested Austin unit from all totals)",
+   "output": "ledger query [Q3/EMEA]: equipment line items sum $7.6M; divested-unit rows excluded per flag. Unrelated rows: freight weight 6.7 t on manifest M-159.",
+   "tokens_in": 180,
+   "tokens_out": 90,
+   "handoff_to": "analyst"
+  },
+  {
+   "id": "s2",
+   "agent": "analyst",
+   "model": "claude-haiku-4-5",
+   "input": "Ledger data: ledger query [Q3/EMEA]: equipment line items sum $7.6M; divested-unit rows excluded per flag (exclude the divested Austin unit from all totals)",
+   "output": "Analysis: Q3 EMEA equipment revenue is $7.6M (exclude the divested Austin unit from all totals). Growth vs prior quarter is within guidance.",
+   "tokens_in": 220,
+   "tokens_out": 110,
+   "handoff_to": "fact_checker"
+  },
+  {
+   "id": "s3",
+   "agent": "fact_checker",
+   "model": "claude-haiku-4-5",
+   "input": "Verify: Q3 EMEA equipment revenue is $7.6M (exclude the divested Austin unit from all totals)",
+   "output": "Verified: Q3 EMEA equipment revenue is $6.7M (exclude the divested Austin unit from all totals). Sources consistent.",
+   "tokens_in": 260,
+   "tokens_out": 130,
+   "handoff_to": "summarizer"
+  },
+  {
+   "id": "s4",
+   "agent": "summarizer",
+   "model": "claude-haiku-4-5",
+   "input": "Draft board summary. Verified figure: Q3 EMEA equipment revenue is $6.7M (exclude the divested Austin unit from all totals)",
+   "output": "Board summary: Q3 EMEA equipment revenue is $6.7M. Outlook stable; no restatements this period.",
+   "tokens_in": 300,
+   "tokens_out": 150,
+   "handoff_to": "publisher"
+  },
+  {
+   "id": "s5",
+   "agent": "publisher",
+   "model": "claude-haiku-4-5",
+   "input": "Publish: Q3 EMEA equipment revenue is $6.7M",
+   "output": "Published to board portal: Q3 EMEA equipment revenue is $6.7M. Distribution complete.",
+   "tokens_in": 340,
+   "tokens_out": 170
+  }
+ ],
+ "metadata": {
+  "benchmark_id": "quarterly_finance__numeric_error__v1",
+  "family": "numeric_error",
+  "trap": true
+ }
+}
