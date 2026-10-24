@@ -1,0 +1,1546 @@
+{
+ "judge": "heuristic",
+ "model": null,
+ "labels": "construction",
+ "elapsed_s": 0.0,
+ "metrics": {
+  "traces": 60,
+  "attribution_accuracy": 0.18333333333333332,
+  "step_level": {
+   "n": 300,
+   "agreement": 0.62,
+   "precision": 0.7513812154696132,
+   "recall": 0.6634146341463415,
+   "f1": 0.7046632124352332,
+   "cohens_kappa": 0.17768694397691756
+  },
+  "trap_slice": {
+   "pre_origin_steps": 51,
+   "false_positive_rate": 0.5882352941176471
+  },
+  "by_family": {
+   "context_dropped": {
+    "attribution_accuracy": 0.0,
+    "traces": 12
+   },
+   "instruction_ignored": {
+    "attribution_accuracy": 0.25,
+    "traces": 12
+   },
+   "numeric_error": {
+    "attribution_accuracy": 0.3333333333333333,
+    "traces": 12
+   },
+   "tool_misread": {
+    "attribution_accuracy": 0.3333333333333333,
+    "traces": 12
+   },
+   "unit_error": {
+    "attribution_accuracy": 0.0,
+    "traces": 12
+   }
+  }
+ },
+ "predictions": {
+  "inventory_restock__context_dropped__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    }
+   }
+  },
+  "inventory_restock__context_dropped__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    }
+   }
+  },
+  "inventory_restock__context_dropped__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    }
+   }
+  },
+  "inventory_restock__context_dropped__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    }
+   }
+  },
+  "inventory_restock__instruction_ignored__v0": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1837"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1837"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1837"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1837"
+    }
+   }
+  },
+  "inventory_restock__instruction_ignored__v1": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24, 2457"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24, 2457"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24, 2457"
+    }
+   }
+  },
+  "inventory_restock__instruction_ignored__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1837"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1837"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1837"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1837"
+    }
+   }
+  },
+  "inventory_restock__instruction_ignored__v3": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 3267"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 3267"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 3267"
+    }
+   }
+  },
+  "inventory_restock__numeric_error__v0": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8130"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8130"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8130"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8130"
+    }
+   }
+  },
+  "inventory_restock__numeric_error__v1": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8130"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8130"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8130"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8130"
+    }
+   }
+  },
+  "inventory_restock__numeric_error__v2": {
+   "origin": "s4",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 5120"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 5120"
+    }
+   }
+  },
+  "inventory_restock__numeric_error__v3": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 5120"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 5120"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 5120"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 5120"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 5120"
+    }
+   }
+  },
+  "inventory_restock__tool_misread__v0": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2360"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2360"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2360"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2360"
+    }
+   }
+  },
+  "inventory_restock__tool_misread__v1": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4250"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4250"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4250"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4250"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4250"
+    }
+   }
+  },
+  "inventory_restock__tool_misread__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 5120"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 5120"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 5120"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 5120"
+    }
+   }
+  },
+  "inventory_restock__tool_misread__v3": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2360"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2360"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2360"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2360"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2360"
+    }
+   }
+  },
+  "inventory_restock__unit_error__v0": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24"
+    }
+   }
+  },
+  "inventory_restock__unit_error__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    }
+   }
+  },
+  "inventory_restock__unit_error__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    }
+   }
+  },
+  "inventory_restock__unit_error__v3": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 24"
+    }
+   }
+  },
+  "quarterly_finance__context_dropped__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    }
+   }
+  },
+  "quarterly_finance__context_dropped__v1": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains failure signature terms: divested, exclude, divested, austin"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    }
+   }
+  },
+  "quarterly_finance__context_dropped__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    }
+   }
+  },
+  "quarterly_finance__context_dropped__v3": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains failure signature terms: divested, exclude, divested, austin"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    }
+   }
+  },
+  "quarterly_finance__instruction_ignored__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    }
+   }
+  },
+  "quarterly_finance__instruction_ignored__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    }
+   }
+  },
+  "quarterly_finance__instruction_ignored__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    }
+   }
+  },
+  "quarterly_finance__instruction_ignored__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    }
+   }
+  },
+  "quarterly_finance__numeric_error__v0": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2.9"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2.9"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2.9"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2.9"
+    }
+   }
+  },
+  "quarterly_finance__numeric_error__v1": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    }
+   }
+  },
+  "quarterly_finance__numeric_error__v2": {
+   "origin": "s4",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2.8"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2.8"
+    }
+   }
+  },
+  "quarterly_finance__numeric_error__v3": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2.7"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2.7"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2.7"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2.7"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2.7"
+    }
+   }
+  },
+  "quarterly_finance__tool_misread__v0": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    }
+   }
+  },
+  "quarterly_finance__tool_misread__v1": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6.7"
+    }
+   }
+  },
+  "quarterly_finance__tool_misread__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4.11"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4.11"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4.11"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4.11"
+    }
+   }
+  },
+  "quarterly_finance__tool_misread__v3": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4.9"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4.9"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4.9"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4.9"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4.9"
+    }
+   }
+  },
+  "quarterly_finance__unit_error__v0": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 7, 7.2"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 200, 7"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 200, 7"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 200, 7"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 200, 7"
+    }
+   }
+  },
+  "quarterly_finance__unit_error__v1": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 11, 11.2"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 11, 11.2"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 11, 200"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 11, 200"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 11, 200"
+    }
+   }
+  },
+  "quarterly_finance__unit_error__v2": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8, 8.4"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8, 8.4"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8, 8.4"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 400, 8"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 400, 8"
+    }
+   }
+  },
+  "quarterly_finance__unit_error__v3": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 7, 7.6"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 600, 7"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 600, 7"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 600, 7"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 600, 7"
+    }
+   }
+  },
+  "support_triage__context_dropped__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    }
+   }
+  },
+  "support_triage__context_dropped__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    }
+   }
+  },
+  "support_triage__context_dropped__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    }
+   }
+  },
+  "support_triage__context_dropped__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "no defect signature found in output"
+    }
+   }
+  },
+  "support_triage__instruction_ignored__v0": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4098"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    }
+   }
+  },
+  "support_triage__instruction_ignored__v1": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8826"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 8826"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    }
+   }
+  },
+  "support_triage__instruction_ignored__v2": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6152"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6152"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 6152"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    }
+   }
+  },
+  "support_triage__instruction_ignored__v3": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 4033"
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "failure's numeric signature absent from output"
+    }
+   }
+  },
+  "support_triage__numeric_error__v0": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 3420"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 4320"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 4320"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 4320"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 4320"
+    }
+   }
+  },
+  "support_triage__numeric_error__v1": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 1250, 2, 2150"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 2150"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 1250, 2"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 1250, 2"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 1250, 2"
+    }
+   }
+  },
+  "support_triage__numeric_error__v2": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 3420"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2, 4320"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2, 4320"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2, 4320"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2, 4320"
+    }
+   }
+  },
+  "support_triage__numeric_error__v3": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 1250, 2, 2150"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 2150"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 1250, 2"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 1250, 2"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 1250, 2"
+    }
+   }
+  },
+  "support_triage__tool_misread__v0": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 3420"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 4320"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 4320"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 4320"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 4320"
+    }
+   }
+  },
+  "support_triage__tool_misread__v1": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 1680, 2, 6180"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 6180"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 6180"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 6180"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 6180"
+    }
+   }
+  },
+  "support_triage__tool_misread__v2": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 3420"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2, 4320"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2, 4320"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2, 4320"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 2, 4320"
+    }
+   }
+  },
+  "support_triage__tool_misread__v3": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 1680, 2, 6180"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 6180"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 6180"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 6180"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 2, 6180"
+    }
+   }
+  },
+  "support_triage__unit_error__v0": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 3"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 3"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 3"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 3"
+    }
+   }
+  },
+  "support_triage__unit_error__v1": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 3"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 3"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 3"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 3"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 3"
+    }
+   }
+  },
+  "support_triage__unit_error__v2": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 3"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 3"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 3"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 3"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 3"
+    }
+   }
+  },
+  "support_triage__unit_error__v3": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1"
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1"
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 3"
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 3"
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "output contains the failure's numeric signature: 1, 3"
+    }
+   }
+  }
+ }
+}

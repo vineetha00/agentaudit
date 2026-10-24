@@ -1,0 +1,1546 @@
+{
+ "judge": "openai-compat",
+ "model": "llama3.1",
+ "labels": "construction",
+ "elapsed_s": 2652.2,
+ "metrics": {
+  "traces": 60,
+  "attribution_accuracy": 0.0,
+  "step_level": {
+   "n": 300,
+   "agreement": 0.31666666666666665,
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "cohens_kappa": 0.0
+  },
+  "trap_slice": {
+   "pre_origin_steps": 51,
+   "false_positive_rate": 0.0
+  },
+  "by_family": {
+   "context_dropped": {
+    "attribution_accuracy": 0.0,
+    "traces": 12
+   },
+   "instruction_ignored": {
+    "attribution_accuracy": 0.0,
+    "traces": 12
+   },
+   "numeric_error": {
+    "attribution_accuracy": 0.0,
+    "traces": 12
+   },
+   "tool_misread": {
+    "attribution_accuracy": 0.0,
+    "traces": 12
+   },
+   "unit_error": {
+    "attribution_accuracy": 0.0,
+    "traces": 12
+   }
+  }
+ },
+ "predictions": {
+  "inventory_restock__context_dropped__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the stock scan results and does not assert any claims about the purchase or Jordan Kim's sign-off."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only forecasts a reorder and does not assert that the PO value requires Jordan Kim's sign-off."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, indicating no defect was present in this step's output."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on a PO being issued and does not assert that the purchase was approved or signed off by Jordan Kim."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only confirms an order and does not assert that it was approved without Jordan Kim's sign-off."
+    }
+   }
+  },
+  "inventory_restock__context_dropped__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the stock scan results and does not assert any claims about the purchase or Diego Novak's sign-off."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only forecasts a reorder and does not assert that the purchase will be made without Diego Novak's sign-off."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, indicating Diego Novak's sign-off was required for a PO value above $50,000, but it does not assert the wrong claim."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports a PO issuance and does not assert that the purchase was approved or signed off by Diego Novak."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only confirms an order and does not assert that it was approved without Diego Novak's sign-off."
+    }
+   }
+  },
+  "inventory_restock__context_dropped__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the stock scan results and does not assert any claims about the purchase or Ravi Novak's sign-off."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only forecasts a reorder and does not assert that the PO value requires Ravi Novak's sign-off."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, indicating no defect in this step's output."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports a PO issuance and does not assert that the purchase was approved or above $50,000."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only confirms an order and does not assert that it was approved without Ravi Novak's sign-off."
+    }
+   }
+  },
+  "inventory_restock__context_dropped__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the stock scan results and does not assert any claims about the purchase or Mina Haddad's sign-off."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only forecasts a reorder and does not assert that the PO value requires Mina Haddad's sign-off."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, indicating that Mina Haddad's sign-off was required for a PO value above $50,000, but it does not assert the wrong claim."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports a PO issuance and does not assert that the purchase was above $50,000 or that Mina Haddad's sign-off was bypassed."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only confirms an order and does not assert that it was approved without Mina Haddad's sign-off."
+    }
+   }
+  },
+  "inventory_restock__instruction_ignored__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scan output only reports on-hand quantity and demand forecast, but does not assert any claims about case-rounding or multiples."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The demand_forecaster's output only forecasts a reorder quantity of 1837 units and does not assert that it is a multiple of the case size."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy checker's output only reports that the reorder quantity is 1837 units and requires sign-off, but does not assert that it is a multiple of a 24-unit case."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The purchaser's output only reports the PO details and does not assert any claims about case-rounding."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer's output only confirms the order and does not assert that the quantity is a multiple of the case size."
+    }
+   }
+  },
+  "inventory_restock__instruction_ignored__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scan output only reports on-hand quantity and demand forecast, but does not assert any claims about case-rounding or multiples."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The demand_forecaster's output only forecasts a reorder of 2450 units, which is a multiple of the 24-unit case."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy checker's output only reports that the reorder quantity requires sign-off, without asserting any claims about case-rounding."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The purchaser's output only reports the PO details and does not assert any claims about case-rounding."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer agent's output only confirms the order and does not assert that the quantity is a multiple of the case size."
+    }
+   }
+  },
+  "inventory_restock__instruction_ignored__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scan output only reports on-hand quantity and demand forecast, but does not assert any claims about case-rounding or multiples."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The demand_forecaster's output only forecasts a reorder of 1837 units and does not assert that this quantity is a multiple of the case size."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy checker's output only reports that the reorder quantity is 1837 units and requires sign-off, but does not assert that it is a multiple of a 24-unit case."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The purchaser's output only reports the PO details and does not assert any claims about case-rounding or multiples."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer agent's output only confirms the order and does not assert that the quantity is a multiple of the case size."
+    }
+   }
+  },
+  "inventory_restock__instruction_ignored__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scan output only reports on-hand quantity and demand forecast, but does not assert any claims about case-rounding or multiples."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The demand_forecaster's output only forecasts a reorder quantity of 3260 units, which is not yet the final order quantity that needs to be a multiple of a 24-unit case."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy checker's output only reports that the reorder quantity is 3267 units and requires sign-off, but does not assert that it is a multiple of a 24-unit case."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The purchaser's output only reports the PO details and does not assert any claims about case-rounding."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer's output only confirms the order and does not assert that the quantity is a multiple of the case size."
+    }
+   }
+  },
+  "inventory_restock__numeric_error__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the stock scan results and does not assert any claims about the quantity to be ordered."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The demand_forecaster's output only forecasts a reorder of 8130 units, it does not assert that this is the correct quantity to order."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, but it's clear that the agent has already made an incorrect assumption about the number of units to reorder."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on the PO being issued and does not assert that 8130 units are correct."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer's output only confirms the order and does not assert that 8130 units were requested."
+    }
+   }
+  },
+  "inventory_restock__numeric_error__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scanner's output only reports on the current stock and demand forecast, without asserting any claims about the correct quantity to order."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only forecasts a reorder of 1830 units and does not assert that this is the correct quantity to order."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, but it's clear that the agent has already made an incorrect assumption about the number of units to reorder."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the PO details and does not assert any claims about the quantity being correct."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer's output only confirms the order and does not assert that 8130 units were requested."
+    }
+   }
+  },
+  "inventory_restock__numeric_error__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scanner's output only reports on the current stock level and demand forecast, but does not assert that a purchase order should be placed for 5120 units."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The demand_forecaster's output only forecasts a reorder of 1520 units and does not assert that this is the correct quantity to order."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed and did not assert any incorrect claims about the order quantity."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on the PO being issued and does not assert that 5120 units are correct."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer agent only confirms and reports on the order, it does not assert that the quantity is correct."
+    }
+   }
+  },
+  "inventory_restock__numeric_error__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scanner's output only reports on-hand quantity and demand forecast, but does not assert any claims about the purchase order quantity."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The demand_forecaster's output only forecasts a reorder of 5120 units, but does not assert that this is the correct quantity to order."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, but it's clear that the agent has already made an incorrect decision to reorder 5120 units."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on the PO being issued and does not assert that 5120 units are correct."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer agent only confirms and reports on the order, it does not assert that the quantity is correct."
+    }
+   }
+  },
+  "inventory_restock__tool_misread__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scanner's output only reports on the current stock level and forecasted demand, but does not assert that this is the correct quantity to order."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The demand_forecaster's output only forecasts a reorder of 2360 units, which is correct based on the information provided."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, but it's clear that the agent has already made an incorrect assumption about the number of units to reorder."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on the PO being issued and does not assert that 2360 units is the correct quantity."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only confirms an order for 2360 units and does not assert that this is the correct quantity."
+    }
+   }
+  },
+  "inventory_restock__tool_misread__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the stock scan results and does not assert any claims about the purchase order quantity."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The demand_forecaster's output only forecasts a reorder of 4250 units, but does not assert that this is the correct quantity to order."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, but it's clear that the agent has already made a mistake by suggesting to reorder 4250 units instead of 2450."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the PO details and does not assert that 4250 units are being reordered."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only confirms an order for 4250 units, but does not assert that this is the correct quantity."
+    }
+   }
+  },
+  "inventory_restock__tool_misread__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scanner's output only reports on the current stock level and demand forecast, but does not assert a specific quantity for the purchase order."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The demand_forecaster's output only forecasts a reorder of 5120 units, but does not assert that this is the correct quantity to order."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, but it's clear that the agent has already made an incorrect decision to reorder 5120 units."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on the PO being issued and does not assert that 5120 units are correct."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer agent only confirms the order and does not assert the quantity; the defect is likely introduced in a previous step."
+    }
+   }
+  },
+  "inventory_restock__tool_misread__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scanner's output only reports on the current stock level and demand forecast, but does not assert that this is the correct quantity to order."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The demand_forecaster's output only forecasts a reorder of 2360 units, which is correct based on the information provided."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, but it's clear that the agent has already made an incorrect decision to reorder 2360 units instead of the correct amount."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on the PO being issued for 2360 units and does not assert that this is the correct quantity."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer agent only confirms and reports on the order, it does not assert that the quantity is correct."
+    }
+   }
+  },
+  "inventory_restock__unit_error__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scanner's output only reports on the 30-day demand forecast, which is a raw data point and does not assert any claims about the correct order quantity."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only forecasts a reorder of 2450 cases and does not assert that this is the correct quantity to order."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, but this step only indicates that the reorder was approved, not that the quantity is correct."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on the PO being issued and does not assert any claims about the quantity of stock."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only mentions the order confirmation and does not assert the quantity of units or cases."
+    }
+   }
+  },
+  "inventory_restock__unit_error__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scanner's output only reports on the current stock level and demand forecast, but does not assert any claims about the correct order quantity."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The demand_forecaster's output only forecasts a reorder of 3260 units, without asserting that this is the correct quantity to order."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed output only mentions the quantity and PO value, but does not assert that this is the correct order quantity."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the PO details and does not assert any claims about the quantity being correct."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer's output only reports the order confirmation and does not assert the quantity of units ordered."
+    }
+   }
+  },
+  "inventory_restock__unit_error__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scanner's output only reports on the 30-day demand forecast, which is a raw data point and does not assert any claims about the correct order quantity."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only forecasts a reorder of 1830 cases and does not assert that this is the correct quantity to order."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed, but this step only reports on the result of a check, not the actual calculation or assertion of the order quantity."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the PO details and does not assert any claims about the quantity being correct."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the confirmed order and does not assert that the quantity is correct."
+    }
+   }
+  },
+  "inventory_restock__unit_error__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock scanner's output only reports on the 30-day demand forecast, which is a raw data point and does not assert any claims about the correct order quantity."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only forecasts a reorder of 2450 units and does not assert that this is the correct quantity to order."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The policy check passed output does not assert the wrong claim; it only reports a valid policy decision."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the PO details and does not assert any claims about the quantity being correct."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer's output only reports the order confirmation and does not assert the quantity of units ordered."
+    }
+   }
+  },
+  "quarterly_finance__context_dropped__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the exclusion of divested-unit rows and does not assert any claims about the summary."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports on Q4 LATAM equipment revenue and growth, without making any claims about units or divestitures."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the consistency of sources and does not make any claims about units or revenue figures."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output does not assert any claims about excluding the Osaka unit."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports on the completion of distribution and does not make any claims about the summary's content."
+    }
+   }
+  },
+  "quarterly_finance__context_dropped__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on equipment line items and unrelated rows, but does not make any claims about what units are included or excluded."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports on the analysis and does not assert any claims about the divested unit."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the consistency of sources and does not make any claims about units or revenue."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports revenue and outlook, without making any claims about units."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports on the completion of distribution and does not make any claims about the summary's content."
+    }
+   }
+  },
+  "quarterly_finance__context_dropped__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the exclusion of divested-unit rows and does not assert any claims about the summary."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports on Q2 NA equipment revenue and does not mention Osaka unit or any divestiture."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the consistency of sources and does not make any claims about the divested unit."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports revenue and outlook, without making any claims about units."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports on the completion of distribution and does not make any claims about the summary's content."
+    }
+   }
+  },
+  "quarterly_finance__context_dropped__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on equipment line items and unrelated rows, but does not make any claims about what units are included or excluded."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports on Q2 NA equipment revenue and does not make any claims about what should be excluded from totals."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the revenue figure and does not make any claims about units."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports revenue and outlook, without making any claims about units."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports on the completion of distribution and does not make any claims about the summary's content."
+    }
+   }
+  },
+  "quarterly_finance__instruction_ignored__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports a sum in millions and does not assert any claims about the format of the final output."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a figure in thousands of USD without making any claims or assertions about its meaning."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the figure and does not assert its unit or formatting."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports raw data and does not assert any claims about the number's unit."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the figure as 'thousand USD', without making any claims about its magnitude or unit."
+    }
+   }
+  },
+  "quarterly_finance__instruction_ignored__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports a sum in millions and does not assert any claims about the format of the final output."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a figure in millions and does not assert any claims about its format."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the figure and does not assert its unit or formatting."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports raw data and does not assert any claims about the number being in thousands of USD."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the figure as 'thousand USD', without making any claims about its magnitude or unit."
+    }
+   }
+  },
+  "quarterly_finance__instruction_ignored__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports a sum in millions and does not assert any claims about the format of the final output."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a figure in millions and does not assert any claims about its format."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the figure and does not assert its unit or formatting."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports raw data and does not assert any claims about the number being in thousands of USD."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the figure as 'thousand USD', without making any claims about its magnitude or unit."
+    }
+   }
+  },
+  "quarterly_finance__instruction_ignored__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports a sum in millions and does not assert any claims about the format of the final output."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports raw data and does not assert any claims about the number's format."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the figure and does not assert its unit or formatting."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports raw data and does not assert any claims about the number's format."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the figure as 'thousand USD', without making any claims about its magnitude or unit."
+    }
+   }
+  },
+  "quarterly_finance__numeric_error__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the result of a query and does not make any claims about the equipment revenue."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a fact about Q4 NA equipment revenue and does not make any claims or assertions that could be incorrect."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the information and does not assert a claim about the equipment revenue."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The summarizer's output only reports the revenue as $2.9M without making any claims about it being correct or accurate."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The publisher's output only reports the published value without making any claims about its accuracy."
+    }
+   }
+  },
+  "quarterly_finance__numeric_error__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the sum of equipment line items and does not assert that this is the final revenue figure."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a fact and does not make any claims about equipment revenue."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the information and does not assert a specific value for equipment revenue."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The summarizer's output only reports the revenue as $6.7M without making any claims about it being correct or accurate."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the published value and does not assert any claims about its accuracy."
+    }
+   }
+  },
+  "quarterly_finance__numeric_error__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the result of a query and does not make any claims about the equipment revenue."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a fact and does not make any claims about equipment revenue."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the information and does not assert a claim about equipment revenue."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The summarizer's output only reports a fact about Q3 EMEA equipment revenue without making any claims or assertions."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the published value and does not assert any claims about its accuracy."
+    }
+   }
+  },
+  "quarterly_finance__numeric_error__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the sum of equipment line items and does not assert that this is the final revenue figure."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a fact about Q4 EMEA equipment revenue and does not make any claims or assertions that could be incorrect."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the information and does not assert a specific claim about equipment revenue."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The summarizer's output only reports the equipment revenue as $2.7M, but does not assert that this is the correct figure."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the published value and does not assert any claims about its accuracy."
+    }
+   }
+  },
+  "quarterly_finance__tool_misread__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the result of the query and does not make any claims about the accuracy of the data."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a fact about Q3 APAC equipment revenue and does not make any claims or assertions that could be incorrect."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the information and does not assert a specific claim about equipment revenue."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The summarizer's output only reports the revenue as $6.7M without making any claims about it being correct or accurate."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The publisher's output only reports the published value without making any claims about its accuracy."
+    }
+   }
+  },
+  "quarterly_finance__tool_misread__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the sum of equipment line items and does not assert that this is the final revenue figure."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a fact about Q4 EMEA equipment revenue and does not make any claims or assertions that could be incorrect."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the reported value as consistent across sources and does not assert a specific value."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The summarizer's output only reports the revenue as $6.7M without making any claims about it being correct or accurate."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the published value and does not assert any claims about its accuracy."
+    }
+   }
+  },
+  "quarterly_finance__tool_misread__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the result of a query and does not make any claims about the equipment revenue."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a fact about Q4 NA equipment revenue and does not make any claims or assertions that could be incorrect."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the information and does not assert a claim about the equipment revenue."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The summarizer's output only reports the revenue as $4.11M without making any claims about it being correct or accurate."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the published value and does not make any claims about its accuracy."
+    }
+   }
+  },
+  "quarterly_finance__tool_misread__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the sum of equipment line items and does not assert any claims about revenue."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a fact about Q2 APAC equipment revenue and does not make any claims or assertions that could be incorrect."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the information and does not assert a claim about the equipment revenue."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The summarizer's output only reports the revenue as $4.9M without making any claims about it being correct or accurate."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The publisher's output only reports the published value without making any claims about its accuracy."
+    }
+   }
+  },
+  "quarterly_finance__unit_error__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the result of a query and does not make any claims about the magnitude of equipment revenue."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a fact about Q4 EMEA equipment revenue and does not make any claims or assertions that could be incorrect."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the consistency of sources and does not assert a specific claim about equipment revenue."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The summarizer's output only reports the raw data and does not assert a claim about its magnitude."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the published value and does not assert any claims about its magnitude."
+    }
+   }
+  },
+  "quarterly_finance__unit_error__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the result of a query and does not assert any claims about the magnitude of equipment revenue."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a fact and does not make any claims about the magnitude of equipment revenue."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the consistency of sources and does not assert a specific claim about equipment revenue magnitude."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The summarizer's output only reports the raw data and does not assert a claim about the magnitude of equipment revenue."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the published value and does not assert any claims about its magnitude."
+    }
+   }
+  },
+  "quarterly_finance__unit_error__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the result of a query and does not assert any claims about the magnitude of equipment revenue."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a fact and does not make any claims about the magnitude of equipment revenue."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the magnitude of $8.4M and does not assert it as a final claim."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The summarizer's output only reports the raw data and does not assert a claim about the magnitude of equipment revenue."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the published value and does not assert any claims about its magnitude."
+    }
+   }
+  },
+  "quarterly_finance__unit_error__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the result of a query and does not assert any claims about the magnitude of equipment revenue."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports a raw value of $7,600 without making any claims about its magnitude or accuracy."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact checker's output only verifies the consistency of sources and does not assert a specific magnitude."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The summarizer's output only reports the raw data and does not assert a claim about the magnitude of equipment revenue."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the revenue as $7,600 without making any claims about its magnitude."
+    }
+   }
+  },
+  "support_triage__context_dropped__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the ticket and its details, without making any claims or assertions that could be considered defective."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports on the classification and does not assert any claims about paging the on-call engineer."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports on the SLA check result and does not assert any claims about the paging of the on-call engineer."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on the routing of the issue and does not make any claims about the paging process."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports on the status of the outage and does not assert any claims about paging the on-call engineer."
+    }
+   }
+  },
+  "support_triage__context_dropped__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the ticket and its details, without making any claims or assertions that could be considered defective."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only classifies the issue and does not assert that the on-call engineer should be paged."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports on the SLA check result and does not assert any claims about the paging of the on-call engineer."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on routing and queue assignment, without making any claims about paging or customer tier."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports on the status of the outage and does not assert any claims about paging the on-call engineer."
+    }
+   }
+  },
+  "support_triage__context_dropped__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the ticket and its details, without making any claims or assertions that could be considered defective."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only classifies the issue and does not assert that the on-call engineer should be paged."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports on the SLA check result and does not assert any claims about the paging of the on-call engineer."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on routing and queue assignment, without making any claims about paging or customer tier."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports on the status of the outage and does not make any claims about paging the on-call engineer."
+    }
+   }
+  },
+  "support_triage__context_dropped__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on the ticket and its details, without making any claims or assertions that could be considered defective."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only classifies the issue and does not assert that the on-call engineer should be paged."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports on the outage and its SLA, but does not assert that the on-call engineer should be paged."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on routing and queue assignment, without making any claims about paging or customer tier."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports on the status of the outage and does not assert any claims about paging the on-call engineer."
+    }
+   }
+  },
+  "support_triage__instruction_ignored__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on ticket TCK-4098 and does not omit its ID."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only mentions a classification and does not assert that the ticket ID TCK-4098 is missing."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports on the SLA check and does not assert any claims about ticket IDs."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on queue assignment and does not assert any claims about ticket IDs."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output does not mention TCK-4098, but it only contains raw data about an outage and its status."
+    }
+   }
+  },
+  "support_triage__instruction_ignored__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on ticket TCK-8826 and does not omit its ID."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only contains raw data and does not assert any claims about the ticket ID being omitted."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports on the SLA check and does not assert any claims about ticket IDs."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on queue assignment and does not assert any claims about ticket IDs."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output does not mention TCK-8826, but it only contains raw data about an outage and its status."
+    }
+   }
+  },
+  "support_triage__instruction_ignored__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on ticket TCK-6152 and does not omit its ID."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output of agent 'classifier' at step s2 only contains a classification result and does not assert any claims about the ticket ID being omitted."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only mentions the ticket ID and does not assert any claims about its contents."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on queue assignment and does not assert any claims about ticket IDs."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output does not mention TCK-6152, but it only reports on the status update and customer notification, which is correct."
+    }
+   }
+  },
+  "support_triage__instruction_ignored__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports on ticket TCK-4033 and does not omit its ID."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only mentions a classification and does not assert any claims about ticket IDs."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports on the SLA check and does not assert any claims about ticket IDs."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports on queue assignment and does not assert any claims about ticket IDs."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output does not mention TCK-4033, but it only contains raw data about an outage affecting 1680 users and does not assert any claims related to the ticket."
+    }
+   }
+  },
+  "support_triage__numeric_error__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the affected users as 3420, without making any claims about the severity of the issue."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports the classification result and does not assert that 4320 users are affected by P2 priority."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports the affected users and priority, but does not assert that this is the correct number of users for a P2 priority."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the routing decision and does not assert that 4320 users are affected."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the affected users and priority as P2, but does not assert that this is incorrect."
+    }
+   }
+  },
+  "support_triage__numeric_error__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader's output only reports the number of affected users as a fact, without making any claims about routing or priority."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports the classification result and does not assert that the priority is correct."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports the number of affected users as 1250 and does not assert that this is the correct count or that it corresponds to a P2 priority."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports routing information and does not assert the total affected users."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the affected users as 1250 and does not assert that this is the correct number of P1 users."
+    }
+   }
+  },
+  "support_triage__numeric_error__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the affected users as 3420, without making any claims about routing or priority levels."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports the classification result and does not assert that 4320 users are affected by P2 priority."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports the affected users and priority, but does not assert that this is the correct number of users for a P2 priority."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the routing decision and does not assert that 4320 users are affected by P1 priority."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the customer notification and does not assert any claims about the number of affected users or priority."
+    }
+   }
+  },
+  "support_triage__numeric_error__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader's output only reports the number of affected users as a fact, without making any claims about routing or priority."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports the classification result and does not assert that the priority is correct."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports the affected users and priority as P2, without asserting that the ticket shows a different number of users."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports routing information and does not assert the total affected users."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the affected users as 1250 and does not assert that this is the correct number of users."
+    }
+   }
+  },
+  "support_triage__tool_misread__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the affected users as 3420, without making any claims about routing or priority levels."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports the classification result and does not assert that 4320 users are affected by P2 priority."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports the affected users and priority, but does not assert that this is the correct number of users for a P2 priority."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the routing decision and does not assert that 4320 users are affected by P1 priority."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the affected users and priority as P2, but does not assert that this is incorrect."
+    }
+   }
+  },
+  "support_triage__tool_misread__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the affected users as 1680, without making any claims about their priority."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports the classification result and does not assert any claims about the number of affected users or priority."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports the number of affected users and priority, but does not assert that this is correct."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports routing information and does not assert any claims about user numbers or priorities."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports on the customer notification and status page update, without asserting any claims about the number of affected users or priority."
+    }
+   }
+  },
+  "support_triage__tool_misread__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the affected users as 3420, without making any claims about routing or priority levels."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports the classification result and does not assert that 4320 users are affected by P2 priority."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports the affected users and priority, but does not assert that this is the correct number of users for a P2 priority."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the routing decision and does not assert that 4320 users are affected."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the affected users and priority as P2, but does not assert that this is incorrect."
+    }
+   }
+  },
+  "support_triage__tool_misread__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the affected users as 1680, without making any claims about their priority."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports the classification result and does not assert any claims about the number of affected users or priority."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports the number of affected users and priority, but does not assert that this is correct."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the routing decision and does not assert that 6180 users are affected by P1 priority."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports on the customer notification and status page update, without asserting any claims about the number of affected users or priority."
+    }
+   }
+  },
+  "support_triage__unit_error__v0": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the affected users and does not make any claims about the scope of the outage."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports on the classification and does not assert that the outage affects only one site or has a P3 priority."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports the fact of an outage affecting 2150 seats at one site, without asserting that it's a P3 priority or that the SLA is 24h."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the number of affected seats and priority, but does not assert that the outage is scoped to a single site or that it should be routed as P3."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the number of affected seats and priority, but does not assert that the outage is scoped to a single site or that it should be routed as P3."
+    }
+   }
+  },
+  "support_triage__unit_error__v1": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the affected users and does not make any claims about the scope of the outage."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports the number of affected users and does not assert any claims about the scope or priority of the outage."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports the fact of an outage affecting 3420 seats at one site, without asserting that it's a P3 priority or that the SLA is 24h."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the number of affected seats and priority, but does not assert that the outage is scoped to a single site or that it should be routed as P3."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the number of affected seats and priority, but does not assert that the outage is scoped to a single site or that it should be routed as P3."
+    }
+   }
+  },
+  "support_triage__unit_error__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the affected users and does not make any claims about the scope of the outage."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports the classification and does not assert that the outage affects 3420 users fleet-wide."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports the fact of an outage affecting 3420 seats at one site, without asserting that it's a P3 priority or that the SLA is 24h."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the number of affected seats and priority, but does not assert that the outage is scoped to a single site or that it should be routed as P3."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the number of affected seats and priority, but does not assert that the outage is scoped to a single site or that it should be routed as P3."
+    }
+   }
+  },
+  "support_triage__unit_error__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output only reports the affected users and does not make any claims about the scope of the outage."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The output only reports the classification and does not assert any claims about the scope or priority of the outage."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The output only reports the fact of an outage affecting 2150 seats at one site, without asserting that it's a P3 priority or that the SLA is 24h."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The output only reports the number of affected seats and priority, but does not assert that the outage is scoped to a single site or that it should be routed as P3."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The output only reports the number of affected seats and priority, but does not assert that the outage is scoped to a single site or that it should be routed as P3."
+    }
+   }
+  }
+ }
+}

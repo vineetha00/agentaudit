@@ -35,14 +35,40 @@ Add `-o report.md` to write the report to a file.
 
 ## Judges
 
-Two judge backends decide handoff scores and defect verdicts:
+Three judge backends decide handoff scores and defect verdicts:
 
 - `--judge heuristic` (default) — deterministic, offline, free. Handoff scores from lexical overlap; defect checks from numeric failure signatures and keyword matching. Good for CI and tests; limited for subtle semantic failures.
 - `--judge anthropic` — LLM judge via the Anthropic API (`ANTHROPIC_API_KEY` required). Semantic judgment of handoff fidelity and defect presence. Use `--model` to pick the judge model.
+- `--judge openai-compat` — the same LLM judge against any OpenAI-compatible server: a local **ollama** (the default, `http://localhost:11434/v1`), **vLLM**, llama.cpp, or LM Studio. `--model` picks the served model, `--judge-url` the endpoint. Fully offline failure attribution with a local model: `agentaudit trace.json --judge openai-compat --model llama3.1 --failure "..."`.
 
-The `Judge` protocol in `agentaudit/judge.py` is two methods; adding an OpenAI or local-model judge is a small class.
+The `Judge` protocol in `agentaudit/judge.py` is two methods; adding another backend is a small class.
 
-Validated against four example traces covering distinct failure types (`examples/demo_trace.json`, `context_dropped_trace.json`, `tool_misread_trace.json`, `instruction_ignored_trace.json`) — numeric transposition, context dropped at a handoff, a tool output misread by the receiving agent, and an explicit instruction ignored. The Anthropic judge attributed all four correctly, including distinguishing steps that merely *contain* a failure's numeric signature from steps that *assert* the wrong claim — a distinction the heuristic judge can't make. See `tests/test_anthropic_judge.py` (skipped without `ANTHROPIC_API_KEY`, so it never runs in CI).
+### Judge validation
+
+The judges are validated on a 60-trace benchmark (`benchmarks/`): 3 pipeline scenarios × 5 failure families (numeric error, unit/magnitude error, tool output misread, context dropped at a handoff, instruction ignored) × 4 variants, each with the failure planted at a known step, so every trace carries a ground-truth origin step and per-step defect labels. Half the traces contain a *trap*: a pre-origin step whose raw tool output incidentally contains the failure's numeric signature without asserting the wrong claim — the case that separates reading for assertions from grepping for numbers.
+
+Results (full tables in [`benchmarks/VALIDATION.md`](benchmarks/VALIDATION.md)):
+
+| Judge | Attribution acc. | Step agreement | Cohen's κ | Trap FPR |
+|---|---|---|---|---|
+| heuristic | 18.3% | 62.0% | 0.18 | 0.59 |
+| Claude Haiku 5.5 | 45.0% | 80.3% | 0.55 | 0.35 |
+| **Claude Sonnet 5.5** | **86.7%** | **96.7%** | **0.92** | **0.06** |
+| llama3.1-8B (ollama) | 0.0% | 31.7% | 0.00 | 0.00 |
+
+The Sonnet judge attributes 100% of numeric-error and tool-misread failures and misses mostly on omission-type failures (instruction ignored: 50%), the genuinely hard family. The trap column is why an LLM judge exists at all: the heuristic false-positives on 59% of steps that merely contain the failure's numbers, Sonnet on 6%. llama3.1-8B is an honest negative result — it answers "not defective" on every one of 300 steps under either prompt wording, so a small local model cannot currently be trusted as the attribution judge (the `openai-compat` backend still works fine against a served frontier-class model, e.g. via vLLM).
+
+Reproduce with:
+
+```bash
+python benchmarks/generate_traces.py            # deterministic corpus, seed 7
+python benchmarks/run_validation.py --judge heuristic
+python benchmarks/run_validation.py --judge openai-compat --model llama3.1 --workers 3
+python benchmarks/run_validation.py --judge anthropic --model claude-haiku-5-5   # or --judge claude-cli on a subscription
+python benchmarks/run_validation.py --report    # writes benchmarks/VALIDATION.md
+```
+
+Construction labels are the default ground truth; `benchmarks/label_sheet.csv` is a ready-to-fill sheet for independent human labels (`--human-labels` rescoring, which also reports human-vs-construction agreement). The earlier four hand-built example traces (`examples/*.json`, `tests/test_anthropic_judge.py`) remain as smoke tests.
 
 ## Trace format
 

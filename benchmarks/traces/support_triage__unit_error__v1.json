@@ -1,0 +1,62 @@
+{
+ "workflow": "support_triage",
+ "task": "Triage inbound ticket TCK-7202 and route it with the right priority. Include the ticket id TCK-7202 in every message. Note: enterprise-tier tickets must page the on-call engineer.",
+ "expected_output": "Customer notified: [TCK-7202] outage affects 3420 users; priority P1, SLA 2h. On-call paged (enterprise tier). Status page updated.",
+ "final_output": "Customer notified: [TCK-7202] outage affects 3420 seats at one site; priority P3, SLA 24h. Status page updated.",
+ "steps": [
+  {
+   "id": "s1",
+   "agent": "ticket_reader",
+   "model": "tool",
+   "input": "Fetch ticket TCK-7202.",
+   "output": "ticket TCK-7202 [enterprise tier]: login outage reported, 3420 affected users across all regions, started 09:12 UTC.",
+   "tokens_in": 180,
+   "tokens_out": 90,
+   "handoff_to": "classifier"
+  },
+  {
+   "id": "s2",
+   "agent": "classifier",
+   "model": "claude-haiku-4-5",
+   "input": "Classify severity. [TCK-7202] Ticket: ticket TCK-7202 [enterprise tier]: login outage reported, 3420 affected users across all regions, started 09:12 UTC.. Enterprise tier: page on-call.",
+   "output": "Classification: [TCK-7202] outage affects 3420 users; priority P1, SLA 2h. Enterprise tier: page on-call.",
+   "tokens_in": 220,
+   "tokens_out": 110,
+   "handoff_to": "sla_checker"
+  },
+  {
+   "id": "s3",
+   "agent": "sla_checker",
+   "model": "claude-haiku-4-5",
+   "input": "Confirm SLA. [TCK-7202] outage affects 3420 users; priority P1, SLA 2h.",
+   "output": "SLA check: [TCK-7202] outage affects 3420 seats at one site; priority P3, SLA 24h.",
+   "tokens_in": 260,
+   "tokens_out": 130,
+   "handoff_to": "router"
+  },
+  {
+   "id": "s4",
+   "agent": "router",
+   "model": "claude-haiku-4-5",
+   "input": "Route. [TCK-7202] outage affects 3420 seats at one site; priority P3, SLA 24h.",
+   "output": "Routed: [TCK-7202] outage affects 3420 seats at one site; priority P3, SLA 24h. Queue assignment done.",
+   "tokens_in": 300,
+   "tokens_out": 150,
+   "handoff_to": "responder"
+  },
+  {
+   "id": "s5",
+   "agent": "responder",
+   "model": "claude-haiku-4-5",
+   "input": "Notify customer. [TCK-7202] outage affects 3420 seats at one site; priority P3, SLA 24h.",
+   "output": "Customer notified: [TCK-7202] outage affects 3420 seats at one site; priority P3, SLA 24h. Status page updated.",
+   "tokens_in": 340,
+   "tokens_out": 170
+  }
+ ],
+ "metadata": {
+  "benchmark_id": "support_triage__unit_error__v1",
+  "family": "unit_error",
+  "trap": true
+ }
+}

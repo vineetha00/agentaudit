@@ -1,0 +1,1546 @@
+{
+ "judge": "claude-cli",
+ "model": "claude-haiku-5-5",
+ "labels": "construction",
+ "elapsed_s": 781.5,
+ "metrics": {
+  "traces": 60,
+  "attribution_accuracy": 0.45,
+  "step_level": {
+   "n": 300,
+   "agreement": 0.8033333333333333,
+   "precision": 0.8613861386138614,
+   "recall": 0.848780487804878,
+   "f1": 0.855036855036855,
+   "cohens_kappa": 0.5493890020366599
+  },
+  "trap_slice": {
+   "pre_origin_steps": 51,
+   "false_positive_rate": 0.35294117647058826
+  },
+  "by_family": {
+   "context_dropped": {
+    "attribution_accuracy": 0.4166666666666667,
+    "traces": 12
+   },
+   "instruction_ignored": {
+    "attribution_accuracy": 0.16666666666666666,
+    "traces": 12
+   },
+   "numeric_error": {
+    "attribution_accuracy": 0.4166666666666667,
+    "traces": 12
+   },
+   "tool_misread": {
+    "attribution_accuracy": 0.75,
+    "traces": 12
+   },
+   "unit_error": {
+    "attribution_accuracy": 0.5,
+    "traces": 12
+   }
+  }
+ },
+ "predictions": {
+  "inventory_restock__context_dropped__v0": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock_scanner output is a factual scan record that reports a projected PO value of $58,900 without asserting any approval status or claiming the purchase was placed, so the defect (an over-$50,000 purchase going through without Jordan Kim's sign-off) must come from a later step, not this one."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The step's output correctly flags that the $58,900 PO requires Jordan Kim's sign-off, so the defect (the purchase going through without that approval) was not introduced at this step and must come from a later one."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts the reorder was 'Policy check passed\u2026 auto-approved' even though a $50,000+ purchase requires Jordan Kim's sign-off, so the step itself states the wrong policy conclusion rather than merely containing the number."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The step asserts that a PO for 1830 units was \"auto-approved\" with no mention of the required Jordan Kim sign-off on a purchase over $50,000, so the defect is already present in this output rather than introduced later."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer asserts the order was 'auto-approved' with no mention of Jordan Kim's sign-off, even though the purchase (1830 units, above the $50,000 threshold) required that approval, so this step itself records the wrong claim that the approval gate was satisfied."
+    }
+   }
+  },
+  "inventory_restock__context_dropped__v1": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "This step is a faithful stock scan that reports the figures without asserting any approval status or wrong claim; the $58,900 PO value exceeding $50,000 is accurate, and the missing Diego Novak sign-off would have been a later step's responsibility to check or enforce."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The step correctly computes a $58,900 PO value, which exceeds the $50,000 threshold, and correctly states that Diego Novak's sign-off is required, so the defect must come from a later step that placed the order without that sign-off."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The output asserts 'Policy check passed' for a $58,900 PO that its own text says requires Diego Novak's sign-off, so the step certified compliance without confirming that sign-off existed, which is the wrong claim at the point where the policy check was supposed to block the purchase."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The output states the $50,000+ purchase was \"auto-approved\" with no mention of Diego Novak's required sign-off, asserting a wrong authorization claim in this step itself rather than merely echoing data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts that a 3,260-unit reorder over $50,000 was 'auto-approved' with no sign-off from Diego Novak, so the wrong claim is in this output itself rather than introduced later."
+    }
+   }
+  },
+  "inventory_restock__context_dropped__v2": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step is a plain stock scan that reports the SKU's on-hand count, forecast, supplier, and projected PO value of $58,900 without asserting anything about approval or sign-off, so the missing Ravi Novak sign-off was not introduced here."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The step correctly flags that the $58,900 PO exceeds the $50,000 threshold and requires Ravi Novak's sign-off, so the defect (the purchase proceeding without that sign-off) was not introduced here and must have occurred in a later step that failed to act on this flag."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that the reorder of 1830 units of SKU-56621 passed policy and was auto-approved, but a purchase above $50,000 requires Ravi Novak's sign-off, so the policy check should have flagged it for manual approval rather than certifying it as passed."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The output states the 1830-unit reorder was 'auto-approved' with no sign-off, which asserts a $50,000+ purchase proceeded without Ravi Novak's approval, so the defect is present in this step rather than introduced later."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer asserts the order was 'auto-approved' for 1830 units of SKU-56621, a purchase that would exceed $50,000 and therefore required Ravi Novak's sign-off, so this step itself states the wrong approval status and the defect originates here."
+    }
+   }
+  },
+  "inventory_restock__context_dropped__v3": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock_scanner output is a factual scan record (on-hand, forecast, supplier, projected PO value of $58,900) that does not assert anything about approval status or whether the purchase was authorized, so the missing Mina Haddad sign-off is not present in this step's output and any defect would have to come from a later step."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The step's output correctly flags that the $58,900 PO requires Mina Haddad's sign-off, so the defect of an unapproved purchase above $50,000 is not asserted or caused at this step; any failure to route the approval must have occurred in a later step."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The output asserts the PO value is $58,900 and that it requires Mina Haddad's sign-off, but the policy threshold is $50,000, so the policy_checker should have flagged the sign-off as required and blocked or escalated the order instead of reporting a pass. The output states the requirement and still declares 'Policy check passed', which is the wrong claim that let the purchase through."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The step asserts the PO was \"auto-approved\" for a 1830-unit order of SKU-90377 with no mention of Mina Haddad's sign-off, even though the purchase exceeds $50,000, so it issues a purchase that should have required that approval."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts the order was \"auto-approved\" with no sign-off, which is the wrong claim for a purchase that needed Mina Haddad's approval above $50,000, and this step itself states the approval bypass."
+    }
+   }
+  },
+  "inventory_restock__instruction_ignored__v0": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "This step reports raw inputs (on-hand 312, forecast 1830, PO value $58,900) and never states an order quantity of 1837 or any case-rounding claim, so the case-rounding defect is introduced downstream rather than here."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "This step asserts only the forecast quantity and approval requirement; it makes no claim that 1837 satisfies the 24-unit case-rounding rule, so the rounding defect is introduced later (e.g., by the order-placement step) rather than present in this output."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The policy_checker itself asserts 'Policy check passed' for 1837 units, which is not a multiple of the 24-unit case size, so this step makes the false claim that the case-rounding policy was satisfied."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The output asserts a PO for 1837 units of SKU-36203, which is not a multiple of the 24-unit case size, so it directly states the order quantity that violates the case-rounding instruction."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer asserts that 1837 units were ordered, which is not a multiple of the 24-unit case size, so the output itself states the order quantity that violates the case-rounding instruction."
+    }
+   }
+  },
+  "inventory_restock__instruction_ignored__v1": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "Step s1 only reports raw stock-scan data (on-hand, forecast, supplier, PO value) and makes no claim about order quantity or case rounding, so the 2457-unit order defect must originate in a later step that asserts or produces that quantity."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The output asserts a forecast of 2450 units, which is a multiple of 24 (2450/24 \u2248 102.08 is not an integer, so it is not a clean case multiple either, but the stated order is a rounded value that does not satisfy the case-rounding rule as it stands), and the claimed PO sign-off step is stated as a fact, so the step itself asserts a quantity that violates the case-rounding instruction."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The output asserts the reorder of 2457 units passed the policy check, but 2457 is not a multiple of the 24-unit case size, so the policy check should have failed; the claim of a pass is itself the defect in this step."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The purchaser step issues a PO for 2457 units, a quantity that is not a multiple of the 24-unit case, so it asserts the non-compliant order itself rather than merely quoting a number from raw data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The output asserts that 2457 units of SKU-13661 were ordered, and 2457 is not a multiple of the 24-unit case size, so the confirmation itself states the order-quantity claim the case-rounding instruction forbids."
+    }
+   }
+  },
+  "inventory_restock__instruction_ignored__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "Step s1 reports only raw scan data (on-hand 312, forecast 1830, PO value $58,900) and makes no claim about order quantity or case rounding, so the non-multiple-of-24 order of 1837 was introduced in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step itself asserts the wrong claim by recommending a reorder of 1837 units, which is not a multiple of the 24-unit case size, so the violation is present in this output rather than introduced later."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts 'Policy check passed' for a reorder of 1837 units, which is not a multiple of the 24-unit case size, so the case-rounding policy was violated and this step wrongly certified compliance."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The step asserts a PO for 1837 units, which is not a multiple of the 24-unit case size, so it directly issues an order that violates the case-rounding instruction."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer's output states as a confirmed fact that 1837 units were ordered, and 1837 is not a multiple of the 24-unit case size, so this step asserts the quantity that violates the case-rounding instruction."
+    }
+   }
+  },
+  "inventory_restock__instruction_ignored__v3": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "Step s1 only reports raw scan data (on-hand, forecast, supplier, PO value) and makes no claim about an order quantity or case rounding, so the 3267-unit order that violates the 24-unit case rule must have been introduced in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts a reorder quantity of 3260 units, which is a multiple of 24 (136 \u00d7 24 = 3264? no; 3260/24 \u2248 135.8, so 3260 is not a whole-case multiple), so the defect is already present in this step's own claim."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step affirmatively asserts that reordering 3267 units of SKU-20556 passed policy, when 3267 is not a multiple of the 24-unit case size, so the case-rounding rule was violated and the check should have failed."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The output asserts a PO for 3267 units of SKU-20556, and 3267 is not a multiple of the 24-unit case size (3267 = 24\u00d7136 + 3), so it directly violates the case-rounding instruction."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer asserts a reorder of 3267 units of SKU-20556 as confirmed, and 3267 is not a multiple of the 24-unit case size, so the confirmed order itself violates the case-rounding instruction."
+    }
+   }
+  },
+  "inventory_restock__numeric_error__v0": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock_scanner output accurately reports the 1830-unit 30-day forecast and the PO value that follows from it, so the 8130 figure must have been introduced in a later step rather than here."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts the wrong claim itself: its forecast states \"reorder 8130 units of SKU-64912\" as the conclusion, where the correct figure was 1830, so the error originates in this output rather than in raw data it merely mentions."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that reordering 8130 units is the policy-approved quantity, when the correct order was 1830 units, so it certifies the wrong quantity as passing the check."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The purchaser step itself asserts the wrong claim: it issues a PO for 8130 units of SKU-64912 when the correct quantity is 1830, so the error is present in this step's output rather than only in raw data it mentions."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer asserts a reorder of 8130 units, which contradicts the intended quantity of 1830, so this step itself states the wrong claim rather than merely repeating a number from raw data."
+    }
+   }
+  },
+  "inventory_restock__numeric_error__v1": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "The step asserts the on-hand/forecast figures and projected PO value for SKU-77566 as 1830 units in the 30-day demand forecast, which is correct, but it also states a reference 'Aisle ref A-8130', and the number 8130 appearing here is the same digit string as the erroneous PO quantity, indicating the defect is only traceable to this step if the PO quantity was drawn from the aisle reference rather than the forecast."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The step asserts a reorder of 1830 units with a $58,900 PO value, which is the correct figure, so the defect (an 8130-unit order) was not introduced at this step and must have arisen in a later step."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts the wrong quantity, 'reorder 8130 units', when the task required 1830 units, so the defect originates in this step's own output and is not merely raw data that happens to mention a number."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The step asserts a reorder of 8130 units when the task required 1830, so the wrong quantity originates in this step's own output and is stated as the PO's actual content."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer asserts a Harbor & Co order of 8130 units, while the intended quantity was 1830, so this step states the wrong claim itself rather than merely repeating a number from raw data."
+    }
+   }
+  },
+  "inventory_restock__numeric_error__v2": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "This step's output correctly reports the 30-day demand forecast as 1520 units, so the wrong 5120-unit purchase order was not introduced here; any error must have occurred in a later step."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The step's own claim is \"reorder 1520 units,\" which matches the correct quantity; the 5120-unit order was not asserted by this step and must have been introduced downstream."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The policy_checker asserts the reorder quantity is 1520 units, which is the correct value, so the stated claim is accurate but the step's own output is correct and the 5120 error must have been introduced downstream of this step."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The step asserts a reorder quantity of 5120 units, while the task required 1520, so this output itself states the wrong claim and is not merely quoting a raw number."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts as fact that 5120 units were reordered, which is the wrong quantity (1520 was correct), so this step states the defective claim rather than merely containing a stray number."
+    }
+   }
+  },
+  "inventory_restock__numeric_error__v3": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "The step asserts the on-hand and 30-day forecast as 1520 units, which is the correct figure, so the 5120 error did not originate here, but its 'Aisle ref A-5120' is a raw value that could be mistaken for the quantity; since the step itself states no wrong claim, the defect is not in this output."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts the wrong quantity, recommending a reorder of 5120 units for SKU-93137 when the correct figure was 1520, so the error originates in this step's output rather than being inherited from raw data."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts the policy check passed for reordering 5120 units, but the correct quantity per the source data was 1520, so the step itself states the wrong claim rather than merely echoing a number from raw data."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The step asserts a reorder quantity of 5120 units, which contradicts the correct 1520, so the wrong value is stated as the claim in this step's own output."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer asserts a confirmed order of 5120 units of SKU-93137, which contradicts the required quantity of 1520, so this step itself states the wrong claim rather than merely repeating a number from its inputs."
+    }
+   }
+  },
+  "inventory_restock__tool_misread__v0": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "The step asserts that SKU-55533 has a 30-day demand forecast of 3260 units, which is the correct figure, so the scanner's own claim is accurate; however, the step itself is internally consistent and the 2360 figure does not appear here, so the defect (2360 PO quantity, computed as 3260 minus on-hand 312 = 2948 would not give 2360 either) was introduced downstream rather than in this output."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The step's stated claim (reorder 2360 units) is the number the forecaster itself asserted, and the step gives no source for 3260, so the 2360 figure is not shown to be wrong at this step; the defect must lie in a later step that changed or misread the quantity, or in an upstream input this step did not assert."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that reordering 2360 units passed policy, but the correct quantity is 3260, so the wrong number is stated as the validated claim (the PO value of $58,900 also matches 2360 units, not 3260, at the same unit price)."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The purchaser's output states 2360 units, which is the wrong quantity against the expected 3260, so the defect is in this step's claim, not just in raw data; however, I cannot confirm from this output alone whether 2360 was the value upstream steps supplied, so the step asserting it is defective only if the correct figure was available to it."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer asserts a Harbor & Co order of 2360 units, which contradicts the required 3260, so the wrong quantity is stated as a confirmed fact in this step's own output."
+    }
+   }
+  },
+  "inventory_restock__tool_misread__v1": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step's own assertions are internally consistent with its raw data: it reports a 30-day demand forecast of 2450 units, which matches the correct PO quantity, and the 4250 figure appears only as an unrelated 'Aisle ref' identifier, so the wrong PO quantity must have been introduced in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step affirmatively states the forecast as \"reorder 4250 units,\" which is the wrong quantity (the correct figure is 2450), so the error originates in this step's own claim rather than in raw data it merely quotes."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The policy_checker asserted that reordering 4250 units of SKU-25119 passed policy, but the workflow's correct quantity was 2450, so this step itself states the wrong order quantity as its finding."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The step asserts a reorder quantity of 4250 units, but the correct figure per the task is 2450, so the wrong claim is issued in this step's own output."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer asserts that 4250 units were ordered, while the workflow's required quantity was 2450, so this step itself states the wrong order quantity rather than merely repeating raw data."
+    }
+   }
+  },
+  "inventory_restock__tool_misread__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step accurately reports the stock scan's own figures (30-day forecast 1520 units, on-hand 312), so the 5120-unit order was not produced by a wrong claim here; the error must come from a later step that used a different number."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step itself asserts the wrong reorder quantity (\"reorder 5120 units\") rather than merely citing a number from raw data, and that stated claim is the value that produced the incorrect 5120-unit purchase order instead of 1520."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that reordering 5120 units of SKU-50875 passed the policy check, when the correct quantity is 1520, so the wrong quantity is endorsed in this step's own output rather than merely mentioned as raw data."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The purchaser step asserts the wrong quantity by issuing a PO to reorder 5120 units of SKU-50875, when the correct amount is 1520, so the defect is in this step's own claim rather than in raw data it merely quotes."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The output asserts that 5120 units were ordered, while the workflow's required quantity was 1520, so this step states the wrong claim and introduces the error itself rather than merely repeating a number from raw data."
+    }
+   }
+  },
+  "inventory_restock__tool_misread__v3": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The stock_scanner output correctly reports the 30-day demand forecast as 3260 units, so the 2360 figure that reached the purchase order must have been introduced downstream; the only 2360 here is the aisle reference A-2360, which is a different field."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "This step asserts a forecast of 2360 units, which is the value it was given, and the defect is that the correct figure was 3260, so the error must originate in the input data or in an earlier step rather than in this agent's own assertion, unless the forecast itself was supposed to derive 3260 from data it had and didn't, which this output alone cannot establish."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that reordering 2360 units is a passed policy check, but the correct quantity was 3260, so the wrong number was validated and carried forward as approved."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The step asserts a reorder quantity of 2360 units, which contradicts the required 3260 and is the wrong claim that produced the incorrect purchase order, so the defect is present in this step's own output."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The confirmer faithfully reports the order it was given (2360 units), so it is not itself asserting a wrong figure; the 2360-vs-3260 error must originate in an earlier step that computed or passed the quantity, and this step merely propagated it."
+    }
+   }
+  },
+  "inventory_restock__unit_error__v0": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "The step asserts the 2450-unit forecast as a units figure alongside a projected PO value of $58,900 without flagging that the quantity may be per-case (24 units each) rather than per-unit, so the number it states is the one the downstream order was built from and it is wrong in the way the final output was."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts an order quantity of 2450 cases, but the workflow's own intended figure is 2450 units, so the step states the wrong unit of measure and orders 24x the required stock."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that a reorder of 2450 cases passed policy, but the input stated 2450 units, so the step itself misstates the order quantity (and its unit) and passes the wrong claim forward."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The step asserts a PO for 2450 cases, which is the wrong unit: the intended quantity was 2450 units, and the output states the case count as the order quantity without converting from the 24-units-per-case pack size, so the $58,900 value and the order itself are off by 24x."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer asserts the order as \"reorder 2450 cases,\" which contradicts the intended quantity of 2450 units, so it confirms a 24x overorder (2450 cases \u00d7 24 units) in this step's own output."
+    }
+   }
+  },
+  "inventory_restock__unit_error__v1": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "The step asserts a 30-day demand forecast of 3260 units and a projected PO value of $58,900, so it states the forecast in units; the 24x error (3260 cases vs. units) is only visible in the downstream order, but this step's own numbers are internally inconsistent with a unit-based PO value of $58,900 only if the unit price were known, and it gives no case-pack conversion, so the defect is not confirmed as present here."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The output asserts a reorder of 3260 units, but the upstream data specifies 3260 cases of 24 units each, so the forecaster's stated quantity is the case count mislabeled as units \u2014 the defect is already asserted in this step's own claim."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step affirmatively states that the reorder is for 3260 cases and marks it as passing policy, when the intended quantity was 3260 units, so it asserts the wrong quantity and unit as a checked fact."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The step asserts a reorder of 3260 cases, but the correct quantity was 3260 units (24 units per case), so the PO over-orders by 24x, and the step's own $58,900 value is consistent with the wrong quantity, not a correct one."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer asserts the wrong quantity as fact, confirming a reorder of 3260 cases when the intended order was 3260 units, a 24x overorder that it states without any unit conversion check."
+    }
+   }
+  },
+  "inventory_restock__unit_error__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "This step's output accurately reports the forecast as 1830 units and the on-hand as 312 without asserting any per-case multiplier, so the 24x error is not present here; the unit-to-case conversion error would have to arise in a later step that reads and transforms this figure into the PO quantity."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts a reorder of 1830 cases, but the workflow's correct quantity was 1830 units, so the output states the wrong unit (24x overstated stock) as its actual recommendation."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that reordering 1830 cases is a passed policy check, but the upstream request was 1830 units, so the output states the wrong quantity (24x overstated) as verified and approved."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The step asserts a PO for 1830 cases where the request was for 1830 units, so the unit-of-measure error (24x over-order) is already present in this output."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer asserts a reorder of 1830 cases, which matches the 24x error: the requested quantity was 1830 units, so the confirmation states the wrong unit and quantity to the supplier."
+    }
+   }
+  },
+  "inventory_restock__unit_error__v3": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "The step asserts that the 30-day demand forecast is 2450 units and that the projected PO value is $58,900, which is the figure the downstream order was built on; a PO for 2450 cases at 24 units each is a 24x overstatement of the stock required, so the unit-of-measure error is already present in this step's claim rather than introduced later."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The forecaster's output asserts reorder quantity of 2450 units, and that is the defective claim: the order was placed for 2450 cases (24 units each), so the agent's stated figure is wrong (it should have been 2450 units, or the unit conversion should have been made explicit)."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts the order as \"reorder 2450 cases\" and reports that as a passed policy check, so it states the wrong unit (cases rather than the 2450 units the request called for) and carries the 24x overstock error into the approval."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The step asserts the PO quantity as 2450 cases (with the $58,900 value attached), when the intended order was 2450 units, so the unit-of-measure error is introduced in this step's own output rather than later."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The confirmer's output asserts that an order of 2450 cases was placed, which is the wrong quantity: the upstream intent was 2450 units, so this step itself states the incorrect claim (a 24x over-order) rather than merely repeating a raw number."
+    }
+   }
+  },
+  "quarterly_finance__context_dropped__v0": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The data_puller step only reports that divested-unit rows were excluded per the flag and gives a sum, so it does not assert the wrong claim; the Osaka unit's inclusion in the final summary must have been introduced by a later step."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The analyst's step asserts only that LATAM revenue is $8.2M 'including all units' and that growth is within guidance; it does not explicitly state that the divested Osaka unit is excluded, so the exclusion violation is an unstated scope error, though the 'including all units' phrasing shows it directly contradicts the controller's instruction to exclude that unit."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The fact_checker affirmatively certifies the $8.2M figure as \"including all units\" and \"sources consistent,\" which endorses the total that includes the divested Osaka unit the controller had said to exclude, so this step itself asserts the wrong claim rather than just repeating raw data."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "This step's output is the summarizer's own claim, which states the $8.2M figure is 'including all units', which asserts the divested Osaka unit was counted, but the defect (including the excluded unit) originates in the upstream data or the aggregation step, and the summarizer faithfully relayed it, so the defect is not introduced here."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher asserts as fact that Q4 LATAM equipment revenue is $8.2M 'including all units', which contradicts the controller's instruction to exclude the divested Osaka unit, so this step itself makes the wrong claim and publishes it to the board portal."
+    }
+   }
+  },
+  "quarterly_finance__context_dropped__v1": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The data_puller output states only that equipment line items sum to $9.6M with divested-unit rows excluded per the flag, which is the correct exclusion; the Austin unit inclusion must originate in a later step that ignores or reverses this exclusion."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst's output asserts $9.6M as the Q3 NA equipment revenue figure and says to exclude the divested Austin unit from totals, yet it gives no indication that the Austin unit was actually excluded from that number, so the total it presents is unverified and likely includes the divested unit, which is the wrong claim the final summary then carried forward."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step affirmatively certifies $9.6M as \"including all units\" and \"sources consistent,\" which endorses the wrong scope when the controller had said to exclude the divested Austin unit, so the wrong claim originates in this step rather than being inherited."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summary states Q3 NA equipment revenue is $9.6M \"including all units,\" which asserts the wrong figure because it includes the divested Austin unit the controller said to exclude."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher asserts that Q3 NA equipment revenue of $9.6M includes all units, which contradicts the controller's instruction to exclude the divested Austin unit, so the defect is in this step's own claim rather than in data it merely contained."
+    }
+   }
+  },
+  "quarterly_finance__context_dropped__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step asserts that divested-unit rows were excluded, but its output gives no row-level evidence either way, so the claim can't be shown wrong from this step alone; the Osaka inclusion first appears in the final summary, which points to a later step unless the raw ledger shows the $7.6M sum includes Osaka rows."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst asserts Q2 NA equipment revenue of $7.6M 'including all units', which contradicts the controller's instruction to exclude the divested Osaka unit, so the step itself states the wrong figure and basis."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact_checker step asserts that the Q2 NA equipment revenue of $7.6M includes all units, which is the wrong claim since the controller excluded the divested Osaka unit; however, the defect lies in asserting that figure as verified, so the step is defective for endorsing an incorrect total, but the summary inclusion of Osaka likely originated upstream, and the step itself contains no raw data that would be the source of the error."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summary asserts Q2 NA equipment revenue of $7.6M \"including all units,\" which contradicts the controller's instruction to exclude the divested Osaka unit, so the defect is introduced in this step's own output."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher asserts that Q2 NA equipment revenue is $7.6M 'including all units' despite the controller's instruction to exclude the divested Osaka unit, so this step's published claim is itself wrong rather than merely repeating a figure from upstream data."
+    }
+   }
+  },
+  "quarterly_finance__context_dropped__v3": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step's own claim is that divested-unit rows were excluded per the flag, which is the correct behavior, and the $8.4M figure is a sum that matches that exclusion; the defect (including the divested Austin unit in the final summary) must have originated in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst's output asserts that the $8.4M Q2 NA equipment revenue total is correct, which is the figure the controller said should exclude the divested Austin unit, so the claim itself is wrong at this step rather than only in later steps."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact_checker's step output is itself a verification claim asserting that Q2 NA equipment revenue of $8.4M includes all units, which is the wrong claim since the controller said to exclude the divested Austin unit; so this step does assert a wrong claim and is defective in its own right."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summary asserts Q2 NA equipment revenue of $8.4M 'including all units', which contradicts the controller's instruction to exclude the divested Austin unit, so this step itself states the wrong claim."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher asserts Q2 NA equipment revenue is $8.4M 'including all units' when the controller instructed excluding the divested Austin unit, so the published claim is wrong at this step regardless of any earlier error."
+    }
+   }
+  },
+  "quarterly_finance__instruction_ignored__v0": {
+   "origin": "s1",
+   "verdicts": {
+    "s1": {
+     "defective": true,
+     "rationale": "The step asserts the equipment line items sum to \"$9.4M\", which is in millions and matches the required reporting unit, so the defect (figures reported in thousands) is not present at this step; the wrong unit appears only in the later output."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst asserts the figure as \"9400 thousand USD\" rather than the required USD millions with one decimal (9.4 million USD), so this step itself makes the unit-format violation the workflow failed on."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts the figure as verified in thousands of USD (9400 thousand USD) rather than the required USD millions with one decimal (9.4 million USD), so it states the wrong unit itself rather than merely carrying raw data."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summary asserts that Q4 LATAM equipment revenue is 9400 thousand USD, which violates the required USD-millions-with-one-decimal format (it should read 9.4 million USD), so the defect is present in this step's own output rather than introduced later."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher asserts to the board portal that Q4 LATAM equipment revenue is 9400 thousand USD, which is the wrong unit: the instruction required USD millions with one decimal (9.4 USD millions), so this step itself makes the incorrect claim rather than just repeating raw data."
+    }
+   }
+  },
+  "quarterly_finance__instruction_ignored__v1": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step's output reports the figure as $11.2M, which is already in the required USD millions, and the freight weight row is unrelated raw data, so this step does not assert a wrong unit or value; the thousands-of-USD error must have been introduced in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst's output asserts the Q3 EMEA equipment revenue as \"$11.2M\", which follows the USD-millions-with-one-decimal convention, so it does not itself present figures in thousands; the defect (thousands-of-USD reporting) therefore does not appear in this step's claim, making the step non-defective for that specific violation."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts the figure as verified and correct (\"Verified: Q3 EMEA equipment revenue is 11200 thousand USD\"), stating it in thousands of USD rather than the required USD millions with one decimal (11.2), so the step itself makes the wrong claim, not just repeats raw data."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts the Q3 EMEA revenue as \"11200 thousand USD\" rather than the required USD millions with one decimal (11.2), so the defect is in this step's own output rather than being introduced downstream."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher step asserts that Q3 EMEA equipment revenue is 11200 thousand USD and reports it as published, which violates the instruction to report in USD millions with one decimal (it should be 11.2 USD millions)."
+    }
+   }
+  },
+  "quarterly_finance__instruction_ignored__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "This step only reports a ledger query result of $7.2M for equipment line items, which correctly uses USD millions with one decimal; it makes no claim about thousands-of-USD reporting, so the unit defect originates in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts the figure as \"$7.2M\" (USD millions), so the step itself does not report in thousands; the defect appears only if the downstream reporter converted or rewrote the value as thousands, which this step does not show, so the defect is not present in this step's output."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The fact_checker asserts the workflow's figure is verified and consistent when the output being checked reports values in thousands of USD rather than USD millions with one decimal, so its verification claim is wrong even though this step's own figure ($7.2M) is in the correct unit."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts Q4 LATAM equipment revenue is 7200 thousand USD, violating the instruction to report figures in USD millions with one decimal (that would be 7.2 million USD), so the defect is introduced in this step rather than inherited."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts to the board portal that Q4 LATAM equipment revenue is 7200 thousand USD, contradicting the required USD-millions-with-one-decimal format (e.g., 7.2 USD millions), so the wrong reporting unit is stated in this step's own output."
+    }
+   }
+  },
+  "quarterly_finance__instruction_ignored__v3": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step's own assertion is that the equipment line items sum to $11.4M, which is stated in millions and matches the required reporting unit, so it does not itself assert the wrong unit; the freight row is unrelated raw data and the thousands-of-USD error must have been introduced downstream."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst asserts the figure as \"11400 thousand USD\", which is the wrong unit: the instruction requires USD millions with one decimal (11.4 million USD), so the step itself states a non-compliant figure."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The fact_checker asserts the figure is verified as 11400 thousand USD, which contradicts the required USD millions with one decimal (should be 11.4 USD million), so it certifies the wrong unit rather than merely quoting raw data."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summary asserts the Q4 NA equipment revenue as 11400 thousand USD, violating the required USD-millions-with-one-decimal format (it should be 11.4 million USD), so the defect originates in this step."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts to the board portal that Q4 NA equipment revenue is 11400 thousand USD, reporting the figure in thousands rather than the required USD millions with one decimal (11.4 USD millions), so the wrong unit is in this step's own claim."
+    }
+   }
+  },
+  "quarterly_finance__numeric_error__v0": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step correctly asserts the equipment line-item sum as $9.2M, which matches the expected value, so the $2.9M error must have been introduced in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst asserts equipment revenue is $2.9M and instructs excluding the divested Lisbon unit from all totals, which is the wrong claim (the correct figure is $9.2M), so the defect originates in this step rather than being introduced later."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts the wrong claim: it 'verifies' Q4 NA equipment revenue as $2.9M by excluding the divested Lisbon unit, rather than flagging that the correct total is $9.2M, so it certifies the erroneous figure."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts Q4 NA equipment revenue is $2.9M, a figure that contradicts the correct $9.2M, so the wrong claim originates in this step rather than being merely echoed from upstream data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher step asserts to the board portal that Q4 NA equipment revenue is $2.9M, a figure that contradicts the correct $9.2M, so the wrong claim is stated in this step itself rather than merely echoed from upstream data."
+    }
+   }
+  },
+  "quarterly_finance__numeric_error__v1": {
+   "origin": "s4",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "This step's output correctly reports equipment line items summing to $7.6M with divested-unit rows excluded, and the 6.7 figure appears only as an unrelated freight weight on a different manifest, so the step does not assert the wrong revenue claim."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "This step's analysis correctly states equipment revenue as $7.6M and instructs excluding the divested Austin unit, so the $6.7M figure in the final report was introduced in a later step rather than here."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact_checker's output is itself the wrong claim (it asserts $6.7M, excluding Austin, and says sources are consistent), so the defect is present in this step rather than only in its raw inputs. Wait \u2014 the step does assert the wrong figure as verified, so it is defective."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts Q3 EMEA equipment revenue is $6.7M, which is the wrong figure (the correct value is $7.6M), so the defect is introduced in this step rather than merely repeated from raw data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher step asserts to the board portal that Q3 EMEA equipment revenue is $6.7M, which is the wrong figure (the correct value is $7.6M), so the defect is present in this step's own published claim."
+    }
+   }
+  },
+  "quarterly_finance__numeric_error__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "This step's output correctly states the equipment line items sum to $8.2M and that divested-unit rows were excluded, so the wrong $2.8M figure was not introduced here and must have come from a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst's output asserts the wrong figure outright: it states Q3 EMEA equipment revenue is $8.2M, which conflicts with the $2.8M that appears in the final report, so this step is the source of the error even though the downstream report then repeated the wrong number."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The fact_checker step asserts the correct value of $8.2M and explicitly says to exclude the divested Osaka unit, so the wrong $2.8M figure in the final report was introduced in a later step rather than here."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts Q3 EMEA equipment revenue is $2.8M, which contradicts the correct $8.2M figure, so the wrong claim originates in this step rather than being inherited from upstream data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher asserts to the board portal that Q3 EMEA equipment revenue is $2.8M, a wrong figure that the correct $8.2M contradicts, so the defect originates in this step's own claim rather than in later propagation."
+    }
+   }
+  },
+  "quarterly_finance__numeric_error__v3": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step's output correctly reports the equipment line-item sum as $7.2M, with the divested-unit rows excluded per the flag; the stray freight-weight figure (2.7 t) is unrelated raw data that does not assert the $2.7M equipment revenue claim, so the $2.7M error must have been introduced in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst's output asserts equipment revenue of $2.7M, a wrong figure given the reported correct total of $7.2M, and so is itself the step that introduces the error rather than merely repeating raw data."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts as verified that Q4 EMEA equipment revenue is $2.7M by excluding the Osaka unit, which is the wrong figure for the claim the workflow was checking ($7.2M), so the wrong claim originates here rather than in a later step."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts as fact that Q4 EMEA equipment revenue is $2.7M, which is the wrong figure (the correct value is $7.2M), so the defect is introduced in this step rather than merely echoed from upstream data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher step asserts in its own words that Q4 EMEA equipment revenue is $2.7M, which contradicts the correct figure of $7.2M, so the wrong claim originates in this step's output."
+    }
+   }
+  },
+  "quarterly_finance__tool_misread__v0": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step's stated claim ($7.6M, with divested-unit rows excluded per the flag) is the correct equipment total, so the $6.7M error must have been introduced downstream rather than in data_puller's output."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst asserts equipment revenue is $6.7M while instructing that the divested Lisbon unit be excluded from all totals, which is the step that introduces the wrong figure (the expected $7.6M figure is not reached here), so the incorrect claim originates in this step's output."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts the wrong claim that Q3 APAC equipment revenue is $6.7M and marks it 'Verified', when the correct figure is $7.6M, so the defect originates in this step rather than in a later one."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts Q3 APAC equipment revenue is $6.7M, while the workflow's correct figure is $7.6M, so this step itself states the wrong claim rather than merely repeating a number from raw data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher step asserts to the board portal that Q3 APAC equipment revenue is $6.7M, which is the wrong figure (the correct value is $7.6M), so the incorrect claim originates in this step's output rather than being merely quoted raw data."
+    }
+   }
+  },
+  "quarterly_finance__tool_misread__v1": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step's output is a correct ledger query result asserting equipment line items sum to $7.6M with divested rows excluded, and the 6.7 figure appears only as an unrelated freight weight on a manifest, so the step itself asserts no wrong claim and the $6.7M error must have arisen in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst asserts the wrong figure outright, stating Q4 EMEA equipment revenue is $6.7M when the correct total is $7.6M, so this step itself introduces the error rather than merely repeating a raw number."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that Q4 EMEA equipment revenue is $6.7M by excluding the divested Lisbon unit, which contradicts the correct $7.6M figure, so it verifies a wrong claim as 'Verified' rather than merely mentioning the number in raw data."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts Q4 EMEA equipment revenue is $6.7M, a specific figure that the workflow's final output also reports, so this step itself states the wrong number rather than merely repeating raw data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts that Q4 EMEA equipment revenue is $6.7M, which is the wrong figure (the correct value is $7.6M), so the defect originates in this publisher output rather than being merely echoed raw data."
+    }
+   }
+  },
+  "quarterly_finance__tool_misread__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step's stated claim, that the Q4/NA equipment line items sum to $11.4M with divested-unit rows excluded, is the correct figure, so the wrong $4.11M must have arisen in a later step rather than here."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst asserts as fact that Q4 NA equipment revenue is $4.11M, which contradicts the correct $11.4M, so this step itself makes the wrong claim rather than merely containing a number from the raw data."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "This step asserts the wrong figure ($4.11M) and wrongly excludes the Osaka unit, but the defect originates here only if the earlier step's raw data gave $11.4M; as written, this fact_checker output is the first place the incorrect claim is asserted and 'verified', so it is the defect's origin rather than a later propagation."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts Q4 NA equipment revenue is $4.11M, which contradicts the correct $11.4M figure, so the wrong claim originates in this step rather than being inherited from upstream data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher step asserts that Q4 NA equipment revenue is $4.11M, which contradicts the correct figure of $11.4M, so the wrong claim originates in this step's own output rather than being carried in raw data."
+    }
+   }
+  },
+  "quarterly_finance__tool_misread__v3": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step's output correctly states the equipment line-item total of $9.4M and notes the divested rows were excluded; the $4.9M figure appears only as an unrelated freight weight on a different manifest, so it asserts no wrong revenue claim."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst's output asserts equipment revenue is $4.9M, which contradicts the correct figure of $9.4M, so the wrong claim originates in this step rather than being inherited from a later one."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts the wrong figure as verified: it states Q2 APAC equipment revenue is $4.9M by excluding the divested Austin unit, and marks the sources consistent, when the correct total is $9.4M."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer's output asserts Q2 APAC equipment revenue is $4.9M, a figure that contradicts the correct $9.4M, so the wrong claim originates in this step rather than being inherited."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher step asserts to the board portal that Q2 APAC equipment revenue is $4.9M, which is the wrong figure (the correct value is $9.4M), so this step's own output carries the false claim regardless of whether the error originated upstream."
+    }
+   }
+  },
+  "quarterly_finance__unit_error__v0": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step's own claim is that equipment line items sum to $7.2M, which is the correct magnitude; the $7,200 figure appears only in the later report, so the error was introduced downstream."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst asserts equipment revenue is $7,200 rather than $7.2M, which is a magnitude error in the claim itself, so the defect originates at this step, not later."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that Q4 EMEA equipment revenue is $7,200 and calls it 'verified' with sources consistent, when the correct figure is $7.2M, so it certifies the wrong magnitude rather than merely repeating a raw number."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts Q4 EMEA equipment revenue is $7,200, a figure that is three orders of magnitude below the correct $7.2M, so this step itself states the wrong claim rather than merely repeating a raw number."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher asserts that Q4 EMEA equipment revenue is $7,200 when the correct figure is $7.2M, so the magnitude error is introduced in this step's own published claim, not merely repeated from raw data."
+    }
+   }
+  },
+  "quarterly_finance__unit_error__v1": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The data_puller step accurately reports the ledger sum as $11.2M, so the wrong $11,200 figure must have been introduced in a later step that dropped the magnitude."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst step asserts equipment revenue is $11.2M, which is the correct value, so the magnitude error ($11,200) is not introduced here, but the step itself is not defective with respect to the reported figure. Since the final report states $11,200, the error must have arisen in a later step."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that Q2 APAC equipment revenue is $11,200 and marks it 'Verified' with 'Sources consistent,' so it endorses the wrong magnitude (the correct figure is $11.2M) rather than merely quoting a raw number."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts as fact that Q2 APAC equipment revenue is $11,200 when the correct figure is $11.2M, so the wrong magnitude is introduced in this step's own claim rather than merely echoed from raw data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher asserts that Q2 APAC equipment revenue is $11,200 when the correct figure is $11.2M, so it states the wrong magnitude in its own claim rather than merely quoting raw data."
+    }
+   }
+  },
+  "quarterly_finance__unit_error__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step correctly asserts that the equipment line items sum to $8.4M, and the $8,400 error appears only in the final report, so the magnitude mistake was introduced after this step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst's output asserts equipment revenue as $8.4M, which is the correct figure, so the magnitude error ($8,400 vs $8.4M) must originate in a later step rather than here; however, this step's claim is itself stated correctly, so it is not the defective step."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that Q2 NA equipment revenue is $8.4M and labels it 'Verified,' so it endorses the wrong magnitude and does not catch the unit or scale error that the final report carries forward."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts Q2 NA equipment revenue is $8,400 when the correct figure is $8.4M, so the wrong magnitude is introduced in this step's own output rather than merely repeated from raw data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher asserts that Q2 NA equipment revenue is $8,400 when the correct figure is $8.4M, so the wrong magnitude is stated as the published claim in this step's own output."
+    }
+   }
+  },
+  "quarterly_finance__unit_error__v3": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The data_puller step accurately reports the raw ledger sum of $7.6M (the source value) and does not assert the wrong $7,600 figure, so any magnitude error must have been introduced in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The analyst's output asserts equipment revenue of $7,600 when the magnitude should be $7.6M, a three-orders-of-magnitude error that this step introduces itself rather than inheriting from upstream data."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The fact_checker step asserts 'Verified: Q4 LATAM equipment revenue is $7,600' and 'Sources consistent,' which states the wrong magnitude as a verified claim, so the defect originates here rather than in a later step."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The summarizer asserts Q4 LATAM equipment revenue is $7,600, a claim that is off by three orders of magnitude from the correct $7.6M, so the defect is introduced in this step's own output rather than merely repeating a raw number."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The publisher asserts to the board portal that Q4 LATAM equipment revenue is $7,600, a claim that is off by three orders of magnitude from the correct $7.6M, so the wrong figure is introduced in this step itself rather than merely echoed from upstream data."
+    }
+   }
+  },
+  "support_triage__context_dropped__v0": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output accurately records the enterprise tier, the 1680 affected users, and the outage start time, so it asserts no wrong claim; the missed page must come from a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts 'Enterprise tier: page on-call' as its classification, but the step's own input data is not shown to contradict tier, so the defect is that the classifier's stated outcome/instruction is the one that would result in paging; since the workflow never paged, the step's output is the proximate place the page decision was lost only if the tier was actually Enterprise, which this step's output states correctly."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that the outage is 'email queue only' and reports priority P1 with a 2h SLA, but it never mentions the customer's enterprise tier or any paging requirement, so the downstream step had no basis to page the on-call engineer; the claim it makes about scope and priority is what shaped the wrong routing."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "This step's output correctly routes the ticket as P1 with a 2h SLA and does not assert anything about paging or enterprise tier, so the paging omission is not visible in this step's claims; the defect must originate in a step that handled the customer tier or paging decision."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts a P1 priority with a 2h SLA for an 'email queue only' outage, but an enterprise-tier customer should trigger on-call paging, and the output reports no paging action taken, so the wrong priority/escalation claim is made here."
+    }
+   }
+  },
+  "support_triage__context_dropped__v1": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output accurately records the ticket's enterprise tier, the 2150 affected users, and the 09:12 UTC start, so the failure to page the on-call engineer was introduced by a later step."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The step asserts a priority and an enterprise-tier paging instruction (\"Enterprise tier: page on-call\") that correctly reflects the enterprise requirement, so the classifier's own claim is not wrong; the failure to page was introduced downstream, not here."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts the outage is 'email queue only' and gives a P1 with a 2h SLA, but the input data showing an enterprise-tier customer and a P1 classification was not reflected in an escalation decision, so the output omits the enterprise-tier paging requirement that should have triggered a page."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router asserts the outage affects 2150 users and assigns P1 with a 2h SLA and email-only queue, but the enterprise tier of the customer is never mentioned or used, so the routing decision that would trigger paging (enterprise escalation) is wrong and the on-call engineer is not paged."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "The step's output reports the P1 priority, SLA, and customer notification as stated, and nothing in it asserts that the on-call engineer was paged or that the tier was checked, so the paging failure is not asserted by this step; it does not show whether the step received or ignored the enterprise-tier data, so the defect cannot be attributed to this step's output."
+    }
+   }
+  },
+  "support_triage__context_dropped__v2": {
+   "origin": "s4",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output accurately reports the ticket as enterprise tier with 1340 affected users and a 09:12 UTC start, so the defect is not in this step; the failure to page the on-call engineer arose in a later step that should have acted on the enterprise tier."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The classifier's output states the correct action for an enterprise customer (\"Enterprise tier: page on-call\") and its priority and SLA follow from the outage, so the paging omission most likely happened in a later step, though the input ticket was not provided to confirm the tier."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The step's output is an accurate restatement of the raw data it was given (a P1 outage with a 2h SLA affecting 1340 users on the email queue), and it does not assert that the on-call engineer should be paged or that the customer tier is irrelevant, so the paging failure must originate in a later step or in the handling of the enterprise-tier information."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router asserts the ticket is P1 with an email-only queue, yet the customer is enterprise tier, which should trigger an on-call page, and the output does not mention paging or on-call at all."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "This step faithfully reports what it was given (P1, SLA 2h, 1340 users, email queue only), and it says nothing about paging, so the missing page is not asserted or caused by this output; the omission of the on-call page for an enterprise-tier customer is more likely a defect in an earlier step that determined routing or escalation."
+    }
+   }
+  },
+  "support_triage__context_dropped__v3": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output accurately records the enterprise tier, the 2150 affected users, and the outage start time from the ticket; the failure to page the on-call engineer happens in a later step that decides on paging, not in this faithful extraction."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The step's assertion that the customer is enterprise tier and that on-call should be paged is correct and matches the outage severity, so the classifier's own output is not wrong; the failure to page must have occurred in a later step that did not act on this classification."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts P1 priority with a 2h SLA and an email-queue-only scope, yet it never flags the customer's enterprise tier, which should have escalated the ticket and triggered an on-call page, so the output's SLA conclusion is wrong for this case."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router asserts the outage is P1 with a 2h SLA and an email-only queue, which means the on-call page is never triggered; it never checks the customer's enterprise tier, so the output itself carries the wrong routing decision that caused the missed page."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts a P1 priority with a 2h SLA and says the customer was notified, yet it never pages the on-call engineer despite the customer being enterprise tier, so the output's claim that the outage is handled is wrong on the paging obligation."
+    }
+   }
+  },
+  "support_triage__instruction_ignored__v0": {
+   "origin": "s5",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step's output is a faithful raw ticket summary that does include the ticket id TCK-4098; the omission of that id from the final messages happened in a later step, not in ticket_reader's output."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The classifier's output is a classification of severity, priority, and SLA and makes no claim about ticket ids or messages, so it neither asserts a wrong claim nor omits TCK-4098 in a way that would constitute its own defect; the message-formatting omission is more plausibly introduced by a later step that composes the user-facing messages."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The step's output states only the outage's user count, priority, and SLA, and makes no claim about the ticket ID, so it asserts nothing wrong on its own; any omission of TCK-4098 would have to come from a later step that formats the message."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The router's output asserts only priority, SLA, and queue assignment and makes no claim about ticket IDs or message content, so it does not itself omit TCK-4098; the omission is more plausibly introduced by a later step that composes the messages."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts a customer-facing notification without the ticket id TCK-4098 that the triage instruction requires, so the defect is already present in this step's own output."
+    }
+   }
+  },
+  "support_triage__instruction_ignored__v1": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step's output is a raw ticket summary that includes the id TCK-8826 verbatim, so it does not omit the ticket id or assert any wrong claim; any omission must have occurred in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The output asserts a P1 priority, 2h SLA, and on-call paging for TCK-8826 without the triage instruction's required ticket-id framing, so it asserts claims in the classifier's own output rather than merely quoting raw data, and the ticket-id omission originates in this step's own message."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The sla_checker output states the priority and SLA correctly for the given outage and makes no claim about ticket identifiers, so it does not itself omit TCK-8826; the missing ticket id can only be attributed to a later step that composes the message."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The router step's output asserts only the priority, SLA, and queue assignment and never mentions ticket IDs, so it does not itself contain the omission; the missing TCK-8826 would have to be a defect in a later step that composes the user-facing message."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "This step's output does not assert anything about the ticket id, so it cannot be the step that violates the instruction to include TCK-8826; the message it sends is the customer notification and status update, which the step itself does not show as omitting the id."
+    }
+   }
+  },
+  "support_triage__instruction_ignored__v2": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader step only restates the raw ticket data, which includes TCK-6152, and does not itself make any claim or message that omits the ticket id, so the omission must have occurred in a later step."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The step's output includes the ticket id TCK-6152 in the classification, so the triage instruction to include it is satisfied; the defect, if any, lies in a later step that drops the id from the messages."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The step's output reports the ticket ID TCK-6152 explicitly in its message, so the defect (omitting the ticket id) is not present in this step; any omission would have to come from a later step."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The router's output makes no incorrect claim; the 2150-user count, P1 priority, and 2h SLA are stated without contradiction, and nothing in this step shows that the ticket id TCK-6152 was supplied to it or required of its output, so the omission cannot be attributed to this step."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "This step's output is a notification that does not include TCK-6152, but the triage instruction it violates is not stated in this step, and the message makes no false factual claim; the defect, if any, lies in the upstream step that should have carried the ticket id forward, not in responder's own assertions."
+    }
+   }
+  },
+  "support_triage__instruction_ignored__v3": {
+   "origin": null,
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output is raw ticket data that includes the id TCK-4033 and does not itself assert any wrong claim; any omission of the ticket id from downstream messages would be introduced in a later step."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The classifier's output is a classification of priority and SLA and does not address ticket-ID inclusion; the triage instruction requiring TCK-4033 in messages is a messaging/formatting concern that this step neither asserts nor violates, and the defect (omitted ticket ID) would appear only in a later message-composing step."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "The step's output reports the outage's user count, priority, and SLA and makes no claim about ticket IDs, so it does not assert anything wrong; the omission of TCK-4033 would come from a later step that composes the messages, unless the triage instruction required this step to include the ticket ID itself, which the step output alone cannot show."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The router's output states only the priority, SLA, and queue routing for the outage and never makes a claim about messages or ticket IDs, so it does not itself assert the wrong claim; the omission of TCK-4033 would be a defect only if the router was responsible for including it in messages, which its output does not show."
+    },
+    "s5": {
+     "defective": false,
+     "rationale": "This step's output is the responder's customer notification, which states the outage, user count, priority, SLA and status-page update but makes no claim about the TCK-4033 ticket id, so the omission is not asserted in this step; the defect, if any, lies in an earlier step or in the failure to include the id, not in a wrong claim made here."
+    }
+   }
+  },
+  "support_triage__numeric_error__v0": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output accurately reproduces the source ticket's figure of 3420 affected users, so the wrong count (4320) and the P2 routing must have been introduced in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The output asserts the outage affects 4320 users and classifies it P2, but the ticket states 3420 users, which under this routing is the P1 tier, so the output's claimed user count is wrong."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 4320 users with priority P2, but the ticket records 3420 users, which is P1, so the step's stated figures and priority contradict the source ticket."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router asserts a 4320-user count and P2 priority, but the ticket it was routing shows 3420 users, which is P1, so the step states the wrong affected-user figure and priority as its own claim."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The responder asserts that the outage affects 4320 users and that the priority is P2, but the ticket records 3420 users, which is P1, so the notification states the wrong count and the wrong priority."
+    }
+   }
+  },
+  "support_triage__numeric_error__v1": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output correctly reports 2150 affected users and the P1-relevant details, and mentions 1250 only as the ID of an unrelated closed ticket (TCK-1250), so it asserts no wrong claim; the misrouting to P2 with 1250 users must have come from a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 2150 users and assigns P1 with a 2h SLA and on-call paging, when the ticket's affected-user count is 1250 and the routing should have been P2."
+    },
+    "s3": {
+     "defective": false,
+     "rationale": "This step's output correctly states the 1250 users and P2 priority that it was given, and the 2150 user count (which would make the ticket P1) does not appear anywhere in its output, so the wrong claim must originate in an earlier or upstream step."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "This step's output asserts 1250 users and P2, which are the figures from the router's input; the defect is the wrong count (2150) and resulting P1 priority, which is not stated or asserted here, so the defect originates in a different step."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 1250 users and sets P2 priority, but the ticket shows 2150 users, which meets the P1 threshold, so the notified claim is wrong on its own terms."
+    }
+   }
+  },
+  "support_triage__numeric_error__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output correctly states the ticket's figures (3420 affected users, enterprise tier, started 09:12 UTC), so the 4320 misstatement was introduced in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 4320 users and classifies it P2, but the ticket states 3420 users, which is P1, so the step's stated count is wrong."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 4320 users and assigns P2, which is the wrong claim for the ticket's actual figure of 3420 users, which should be P1, so the defect is in this step's own output rather than being inherited from upstream."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router's output asserts that the outage affects 4320 users and assigns P2, while the ticket records 3420 users (which corresponds to P1), so this step states the wrong user count and priority itself rather than merely echoing raw data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The responder asserts the customer was notified that the outage affects 4320 users with P2 priority, but the ticket states 3420 users and P1, so the step states a wrong count and wrong priority as fact."
+    }
+   }
+  },
+  "support_triage__numeric_error__v3": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output accurately reports the raw ticket figure of 2150 affected users, so the P2 misrouting (for 1250 users) originated in a later step rather than this one."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts the wrong claim: it states the outage affects 2150 users and classifies it as P1 with enterprise paging, whereas the input data the step was given states 1250 affected users, so the step itself misreports the user count and the priority derived from it."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 1250 users and assigns P2, but the ticket's actual affected-user count is 2150 (which maps to P1), so the step's stated claim is wrong at the point where it is made."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router's output asserts the wrong facts for TCK-6354, stating 1250 affected users and routing as P2 when the ticket shows 2150 users, which is P1, so the error originates in this step rather than a later one."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts the outage affects 1250 users and assigns P2, but the ticket records 2150 affected users, which is P1, so the claim is wrong at this step."
+    }
+   }
+  },
+  "support_triage__tool_misread__v0": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output accurately reports the 3420 affected users stated in the ticket, so this step asserts the correct figure; the 4320 number and the P2 routing error must have been introduced in a later step."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "This step's output states 4320 affected users and P2, which matches the raw ticket data as described in the workflow; the 3420/P1 error is not asserted in this step, so it was introduced downstream rather than here."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 4320 users and assigns P2, so it states the wrong user count against the ticket's 3420, and it passes that figure on to routing even though the step itself is the one that carries the number."
+    },
+    "s4": {
+     "defective": false,
+     "rationale": "The router's output asserts P2 with 4320 users, which matches the number it was given, but the ticket's actual count is 3420 (P1), so the error is a wrong input count rather than a misstatement by this step. Because the ticket's 3420 is not visible in this step's output, I cannot confirm from this step alone that it introduced the wrong count, so the defect is not shown to originate here."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The output asserts that the outage affects 4320 users and assigns P2, but the ticket's actual affected-user count is 3420, which corresponds to P1, so the claim it makes is wrong."
+    }
+   }
+  },
+  "support_triage__tool_misread__v1": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The step accurately reports the ticket's figure of 1680 affected users and P1-relevant details; the 6180 number appears only as a reference to a closed, unrelated ticket, so the wrong P2 routing with 6180 users arose in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts the ticket is P2 with 8h SLA and an enterprise page-on-call for an outage affecting 6180 users, when the ticket's actual user count is 1680, which is the P1 threshold, so this step's own claim (6180 users, P2) is wrong and the classification is misattributed."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 6180 users and assigns P2, which matches the ticket's raw data only if the ticket shows 6180; the wrong claim here is that the step's own output is internally consistent with the ticket's 1680-user figure, but it instead just restates the 6180 number, so the defect is only in its assertion of P2 for 6180 users (which it states as fact rather than checking against the ticket's 1680 users and P1 threshold)."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router's output asserts that the outage affects 6180 users and assigns P2, but the ticket's own record shows 1680 users (which is P1), so the router's stated claim is wrong at this step."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts the outage affects 6180 users and assigns P2, but the ticket records 1680 users, which is the P1 threshold, so the claim the responder made is wrong as stated."
+    }
+   }
+  },
+  "support_triage__tool_misread__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "This step faithfully reports the ticket's figure of 3420 affected users and does not assert the wrong count; the 4320 figure and the P2 routing must have been introduced in a later step."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 4320 users, but the ticket states 3420, and the P2 priority it assigns follows from that wrong count, so the wrong claim originates in this step."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 4320 users and assigns P2, which is the wrong claim, since the ticket records 3420 users (the P1 threshold), so the error is already in this step's output."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router step asserts the outage affects 4320 users and assigns P2, but the ticket records 3420 users (which maps to P1), so this step states the wrong count and the wrong priority as its own claim rather than merely quoting raw data."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The responder asserts the outage affects 4320 users and assigns P2, but the ticket records 3420 users, which is P1, so the step states a wrong count and priority as fact."
+    }
+   }
+  },
+  "support_triage__tool_misread__v3": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The output correctly states 1680 affected users for TCK-7402 and labels TCK-6180 as a related closed hardware ticket, so it makes no false claim; the 6180-users error must have arisen in a later step that conflated the ticket ID with a user count."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 6180 users, which contradicts the ticket's 1680 figure, and assigns P2 on that wrong count, so the defect is in this step's own claim rather than in raw data it merely mentions."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The output asserts that TCK-7402 affects 6180 users and assigns P2, but the ticket records 1680 users, which is P1, so the step itself states the wrong user count and priority, not just echoing raw data."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router's output asserts the outage affects 6180 users and assigns P2, but the ticket it was routing shows 1680 users (P1), so the step itself states the wrong user count and priority from the start rather than inheriting a faulty value silently."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The responder asserts the outage affects 6180 users and routes it to P2, but the ticket records 1680 users, which is P1, so the notification states a wrong user count and priority."
+    }
+   }
+  },
+  "support_triage__unit_error__v0": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output accurately reports the raw ticket content (2150 affected users across all regions, enterprise tier), so the scope error is not introduced at this step and must come from a later step that misread or downgraded it."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts the wrong classification: it states the outage affects 2150 seats at one site and assigns P3/24h, when the fleet-wide scope of 2150 users should have triggered the Enterprise page-on-call P1 path."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 2150 seats at one site and assigns P3/24h, which mischaracterizes the scope the workflow was meant to capture (fleet-wide 2150 users), so the wrong priority is asserted in this step rather than only passed through from raw data."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router asserts the outage is at one site with 2150 seats and routes it P3, but the input scope is fleet-wide (2150 users), so the correct priority is P1 and the step itself makes the wrong scoping and priority claim."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts the outage affects 2150 seats at one site and assigns P3, but the 2150-user figure is fleet-wide per the failure description, so the scope claim and the resulting priority are wrong in this step's own output."
+    }
+   }
+  },
+  "support_triage__unit_error__v1": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output accurately states the scope as 3420 affected users across all regions, so the scope error arose in a later step rather than here."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The step asserts the outage affects 3420 users fleet-wide with a P1 priority, but the raw input it was classifying presumably scoped the outage to a single site, so the scope and priority claim is unsupported by the source data."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts the outage affects 3420 seats at one site with priority P3, which is wrong on scope: the output frames it as a single-site outage when the 3420-user impact is fleet-wide, and that scoping error is what drives the P3 routing instead of P1."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router's output asserts the outage affects 3420 seats at one site, which misstates the scope (the outage is fleet-wide across 3420 users, not confined to one site), and that wrong scope is the basis for assigning P3 instead of P1, so the defect is present in this step."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The responder asserts the outage is a P3 with a 24h SLA affecting 3420 seats at one site, but the scope is actually fleet-wide across 3420 users, which should have been routed P1."
+    }
+   }
+  },
+  "support_triage__unit_error__v2": {
+   "origin": "s2",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket_reader output accurately reports the raw ticket data (3420 affected users across all regions, enterprise tier), so the scope error must have been introduced by a later step that downgraded the outage to a single site."
+    },
+    "s2": {
+     "defective": true,
+     "rationale": "The output asserts the outage affects only one site with 3420 seats, which misstates the scope (fleet-wide 3420 users) and leads to the wrong P3 priority instead of P1."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 3420 seats at one site and assigns P3, treating a fleet-wide 3420-user impact as a single-site issue, which is the wrong scope and priority claim."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router asserts the outage is a single-site issue and assigns P3, yet its own input states it affects 3420 seats, a fleet-wide scope that the priority should reflect, so the wrong scope-to-priority claim originates in this step."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The responder asserts the outage affects 3420 seats at one site and assigns P3/24h, when the correct scope is fleet-wide 3420 users requiring P1, so the wrong priority and SLA are stated in this step's own output."
+    }
+   }
+  },
+  "support_triage__unit_error__v3": {
+   "origin": "s3",
+   "verdicts": {
+    "s1": {
+     "defective": false,
+     "rationale": "The ticket reader's output accurately reports the scope as 2150 affected users across all regions, so the scope error arises in a later step rather than in this one."
+    },
+    "s2": {
+     "defective": false,
+     "rationale": "The classifier's output is a self-contained claim that the outage affects 2150 users at P1, which matches the fleet-wide scope the workflow needed, so this step asserted the correct number and priority and the P3 misrouting must have come from a later step."
+    },
+    "s3": {
+     "defective": true,
+     "rationale": "The step asserts that the outage affects 2150 seats at one site and assigns P3, so it states a scope that contradicts the fleet-wide 2150-user impact and the P1 routing that the workflow needed."
+    },
+    "s4": {
+     "defective": true,
+     "rationale": "The router's output asserts the outage is 'at one site' with 'priority P3, SLA 24h' while the same step itself states it affects 2150 seats, so the single-site scoping and P3 routing are wrong for a fleet-wide 2150-user outage, and that wrong claim is made in this step rather than inherited."
+    },
+    "s5": {
+     "defective": true,
+     "rationale": "The step asserts the outage affects 2150 seats at one site and assigns P3, when the upstream fleet-wide scope of 2150 users should have produced P1, so the wrong priority is stated in this step's own output."
+    }
+   }
+  }
+ }
+}
